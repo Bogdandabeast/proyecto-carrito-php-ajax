@@ -1,11 +1,7 @@
-
 ```markdown
-# Proyecto Carrito jose php-ajax
+# Proyecto Carrito José PHP + AJAX
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Docker](https://img.shields.io/badge/docker-ready-blue.svg)](https://www.docker.com/)
-
-¡Bienvenido a **Proyecto de la 2 Evaluacion de cliente PHP + AJAX**
+¡Bienvenido al **Proyecto de la 2 Evaluación de Cliente PHP + AJAX**!
 
 ## Tabla de Contenidos
 
@@ -13,7 +9,6 @@
 - [Uso](#uso)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Contribuciones](#contribuciones)
-- [Licencia](#licencia)
 
 ## Instalación
 
@@ -25,7 +20,7 @@ Sigue estos pasos para configurar el proyecto en tu entorno local:
    ```
 2. Navega al directorio del proyecto:
    ```bash
-   cd proyecto-
+   cd proyecto-carrito-php-ajax
    ```
 3. Construye y levanta los contenedores Docker:
    ```bash
@@ -41,7 +36,7 @@ Para acceder a phpMyAdmin, dirígete a [http://localhost:8081](http://localhost:
 ## Estructura del Proyecto
 
 ```plaintext
-├── Enunciado Proyecto Integracion.pdf
+├── Enunciado_Proyecto_Integracion.pdf
 ├── README.md
 ├── app
 │   ├── carrito.php
@@ -52,7 +47,7 @@ Para acceder a phpMyAdmin, dirígete a [http://localhost:8081](http://localhost:
 │   └── usuario.php
 ├── db
 ├── docker-compose.yml
-└── dockerfile
+└── Dockerfile
 ```
 
 - **docker-compose.yml**: Archivo de configuración de Docker Compose.
@@ -69,6 +64,9 @@ Para acceder a phpMyAdmin, dirígete a [http://localhost:8081](http://localhost:
 3. Realiza tus cambios y haz commits (`git commit -m 'Añadir nueva feature'`).
 4. Envía tus cambios (`git push origin feature/nueva-feature`).
 5. Abre un Pull Request.
+
+```
+
 
 
 
