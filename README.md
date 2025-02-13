@@ -65,7 +65,6 @@ Para acceder a phpMyAdmin, dirígete a [http://localhost:8081](http://localhost:
 4. Envía tus cambios (`git push origin feature/nueva-feature`).
 5. Abre un Pull Request.
 
-```
 
 
 
