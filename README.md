@@ -1,4 +1,4 @@
-```
+
 # Proyecto Carrito José PHP + AJAX
 
 ¡Bienvenido al **Proyecto de la 2 Evaluación de Cliente PHP + AJAX**!
