@@ -1,5 +1,4 @@
 
-
 services:
   php-apache:
     build: .
@@ -19,7 +18,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
+      MYSQL_DATABASE: carrito
       MYSQL_USER: user
       MYSQL_PASSWORD: userpassword
     ports:
@@ -38,6 +37,9 @@ services:
     environment:
       PMA_HOST: mysql
       MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: carrito
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
     depends_on:
       - mysql
     networks:
