@@ -36,8 +36,6 @@ Para acceder a phpMyAdmin, dirígete a [http://localhost:8081](http://localhost:
 ## Estructura del Proyecto
 
 ```plaintext
-├── Enunciado_Proyecto_Integracion.pdf
-├── README.md
 ├── app
 │   ├── carrito.php
 │   ├── index.php
@@ -45,14 +43,16 @@ Para acceder a phpMyAdmin, dirígete a [http://localhost:8081](http://localhost:
 │   ├── login.php
 │   ├── registro.php
 │   └── usuario.php
-├── db
+├── db.sql
 ├── docker-compose.yml
-└── Dockerfile
+├── dockerfile
+├── Enunciado Proyecto Integracion.pdf
+└── README.md
 ```
 
 - **docker-compose.yml**: Archivo de configuración de Docker Compose.
 - **app/**: Directorio de archivos web.
-- **db/**: Directorio de volúmenes de la base de datos.
+- **db.sql**: El archivo sql para importar las tablas.
 - **README.md**: Este archivo.
 
 ## Contribuciones
