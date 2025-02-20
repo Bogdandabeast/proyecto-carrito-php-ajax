@@ -10,7 +10,7 @@
 
         <ul id="guest">
             <li><a href="login.php">Iniciar Sesión</a></li>
-            <li><a href="register.php">Registro</a></li>
+            <li><a href="registro.php">Registro</a></li>
         </ul>
     </nav>
 </header>
