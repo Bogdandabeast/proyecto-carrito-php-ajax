@@ -202,12 +202,11 @@ display: none;
   font-weight: bold;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3sease;
   margin-top: 10px;
 }
 
 #zapatillas .boton-compra:hover {
-  background-color: #c4001d;
+  background-color: #000;
 }
 
 @media (max-width: 768px) {
