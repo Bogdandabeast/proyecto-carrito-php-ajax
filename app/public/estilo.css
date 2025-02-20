@@ -38,6 +38,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 nav a {
@@ -54,6 +55,27 @@ nav #guest a {
   border: 1px solid;
   border-radius: 20px;
   padding: 5px 10px;
+}
+
+nav #carrito {
+  position: relative;
+}
+
+nav #carrito img {
+  width: 30px;
+  height: 30px;
+}
+
+nav #carrito span {
+    position: absolute;
+    background: #ffffff;
+    color: #000000;
+    padding: 0px 3px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    left: 17px;
+    top: -1px;
+    border: 3px solid #000000;
 }
 
 nav a::after {
@@ -75,24 +97,28 @@ nav a:hover {
   color: #ccc;
 }
 
- #banner {
-    width: 100%;
-    margin-bottom: 40px;
+#banner {
+  width: 100%;
+  margin-bottom: 40px;
 }
 
-#inicio h1{
-    text-align: center;
-    font-weight: 500;
-    color: #2b2b2b;
+#inicio h1 {
+  text-align: center;
+  font-weight: 500;
+  color: #2b2b2b;
 }
 
 #opciones {
-    margin-top: 20px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 30px;
 }
 
+
+#opciones label{
+display: none;
+}
 #opciones input,
 #opciones select {
   padding: 15px;
@@ -114,76 +140,75 @@ nav a:hover {
   border-bottom-color: #444;
 }
 
-#zapatillas{
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
+#zapatillas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #zapatillas .zapatilla {
-    max-width: 350px;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  #zapatillas .zapatilla:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-  }
-  
-  #zapatillas img {
-    width: 100%;
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-  }
-  
-  #zapatillas .detalles-producto {
-    padding: 20px;
-  }
-  
-  #zapatillas .titulo-producto {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin: 0 0 10px;
-  }
-  
-  #zapatillas .descripcion-producto {
-    font-size: 16px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 20px;
-  }
-  
-  #zapatillas .precio-producto {
-    font-size: 20px;
-    color: #e60023;
-    font-weight: bold;
-  }
-  
-  #zapatillas .boton-compra {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #424f57;
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3sease;
-    margin-top: 10px;
-  }
-  
-  #zapatillas .boton-compra:hover {
-    background-color: #c4001d;
-  }
+  max-width: 350px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#zapatillas .zapatilla:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+#zapatillas img {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+#zapatillas .detalles-producto {
+  padding: 20px;
+}
+
+#zapatillas .titulo-producto {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+#zapatillas .descripcion-producto {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+#zapatillas .precio-producto {
+  font-size: 20px;
+  color: #e60023;
+  font-weight: bold;
+}
+
+#zapatillas .boton-compra {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #424f57;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3sease;
+  margin-top: 10px;
+}
+
+#zapatillas .boton-compra:hover {
+  background-color: #c4001d;
+}
 
 @media (max-width: 768px) {
   header {
