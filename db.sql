@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -26,13 +25,18 @@ SET time_zone = "+00:00";
 --
 -- Estructura de tabla para la tabla `PEDIDO`
 --
+DROP DATABASE IF EXISTS carrito;
+
+CREATE DATABASE carrito;
+
+USE carrito;
 
 CREATE TABLE `PEDIDO` (
   `id` int NOT NULL,
   `idUsuario` int DEFAULT NULL,
   `precioTotal` decimal(9,2) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -44,7 +48,7 @@ CREATE TABLE `PEDIDO_ZAPATILLA` (
   `idPedido` int NOT NULL,
   `idZapatilla` int NOT NULL,
   `cantidad` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -59,7 +63,7 @@ CREATE TABLE `USUARIO` (
   `email` varchar(250) DEFAULT NULL,
   `clave` varchar(255) DEFAULT NULL,
   `tipo` enum('REGISTRADO','INVITADO') DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -73,7 +77,23 @@ CREATE TABLE `ZAPATILLA` (
   `imagen` varchar(255) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
   `precio` decimal(9,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Insertar datos en la tabla `ZAPATILLA`
+--
+
+INSERT INTO `ZAPATILLA` (`id`, `modelo`, `imagen`, `descripcion`, `precio`) VALUES
+(1, 'Air Max 90', 'airmax90.jpg', 'Zapatillas clásicas de Nike con diseño retro.', 129.99),
+(2, 'Yeezy Boost 350', 'yeezy350.jpg', 'Zapatillas icónicas de Kanye West y Adidas.', 220.00),
+(3, 'Converse Chuck Taylor', 'chucktaylor.jpg', 'Clásicas Converse de lona en color blanco.', 59.99),
+(4, 'Puma Suede Classic', 'pumasuede.jpg', 'Zapatillas de ante clásicas y versátiles.', 74.99),
+(5, 'Vans Old Skool', 'vansoldskool.jpg', 'Modelo clásico de Vans con banda lateral.', 64.99),
+(6, 'New Balance 574', 'nb574.jpg', 'Modelo retro de New Balance con gran comodidad.', 89.99),
+(7, 'Jordan 1 Retro', 'jordan1.jpg', 'Zapatillas icónicas de baloncesto.', 170.00),
+(8, 'Reebok Classic', 'reebokclassic.jpg', 'Zapatillas retro en cuero blanco.', 79.99),
+(9, 'Asics Gel-Lyte III', 'asicsgellyte3.jpg', 'Modelo de running clásico con suela de gel.', 119.99),
+(10, 'Fila Disruptor II', 'filadisruptor.jpg', 'Zapatillas chunky con suela gruesa.', 85.00);
 
 --
 -- Índices para tablas volcadas
