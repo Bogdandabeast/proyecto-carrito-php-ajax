@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="public/js/zapatillas.js"></script>
 </head>
 
 <body>
@@ -24,46 +25,18 @@
             <label for="buscar-zapatilla">Buscar modelo de zapatilla</label>
             <input type="text" id="buscar-zapatilla" placeholder="Buscar modelo de zapatilla" aria-label="Buscar modelo de zapatilla">
 
-            <label for="ordenar">Ordenar productos</label>
+            <!-- <label for="ordenar">Ordenar productos</label>
             <select id="ordenar" class="ordenar" aria-label="Ordenar productos">
                 <option value="">Ordenar por</option>
                 <option value="nuevo">Más recientes</option>
                 <option value="popular">Más populares</option>
                 <option value="precioAsc">Precio: Menor a mayor</option>
                 <option value="precioDesc">Precio: Mayor a menor</option>
-            </select>
+            </select> -->
         </section>
 
         <section id="zapatillas" aria-label="Lista de zapatillas disponibles">
-            <article class="zapatilla">
-                <img src="public/img/zapatillas/airforce.png" alt="Zapatillas Airforce color blanco">
-                <div class="detalles-producto">
-                    <h2 class="titulo-producto">Airforce</h2>
-                    <p class="descripcion-producto">Diseño moderno y deportivo, ideal para tus entrenamientos.</p>
-                    <p class="precio-producto">120.00€</p>
-                    <a href="#" class="boton-compra" aria-label="Añadir Airforce al carrito">Añadir al Carrito</a>
-                </div>
-            </article>
 
-            <article class="zapatilla">
-                <img src="public/img/zapatillas/airforce.png" alt="Zapatillas Airforce color blanco">
-                <div class="detalles-producto">
-                    <h2 class="titulo-producto">Airforce</h2>
-                    <p class="descripcion-producto">Diseño moderno y deportivo, ideal para tus entrenamientos.</p>
-                    <p class="precio-producto">120.00€</p>
-                    <a href="#" class="boton-compra" aria-label="Añadir Airforce al carrito">Añadir al Carrito</a>
-                </div>
-            </article>
-
-            <article class="zapatilla">
-                <img src="public/img/zapatillas/airforce.png" alt="Zapatillas Airforce color blanco">
-                <div class="detalles-producto">
-                    <h2 class="titulo-producto">Airforce</h2>
-                    <p class="descripcion-producto">Diseño moderno y deportivo, ideal para tus entrenamientos.</p>
-                    <p class="precio-producto">120.00€</p>
-                    <a href="#" class="boton-compra" aria-label="Añadir Airforce al carrito">Añadir al Carrito</a>
-                </div>
-            </article>
         </section>
     </main>
 </body>

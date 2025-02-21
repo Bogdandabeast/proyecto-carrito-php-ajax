@@ -109,10 +109,11 @@ nav a:hover {
 }
 
 #opciones {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 30px;
+  display: flex
+  ;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
 }
 
 
@@ -127,6 +128,7 @@ display: none;
   border-bottom: 2px solid #ddd;
   transition: border-color 0.3s;
   margin-bottom: 20px;
+  min-width: 335px;
 }
 #opciones input::placeholder {
   color: #aaa;
@@ -144,6 +146,7 @@ display: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 #zapatillas .zapatilla {
