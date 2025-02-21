@@ -32,10 +32,11 @@ CREATE DATABASE carrito;
 USE carrito;
 
 CREATE TABLE `PEDIDO` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,  -- Agregado AUTO_INCREMENT
   `idUsuario` int DEFAULT NULL,
   `precioTotal` decimal(9,2) DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL
+  `fecha` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)  -- La clave primaria debe estar especificada
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -57,13 +58,16 @@ CREATE TABLE `PEDIDO_ZAPATILLA` (
 --
 
 CREATE TABLE `USUARIO` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,  -- Agregado AUTO_INCREMENT
   `nombre` varchar(45) DEFAULT NULL,
   `apellidos` varchar(150) DEFAULT NULL,
   `email` varchar(250) DEFAULT NULL,
   `clave` varchar(255) DEFAULT NULL,
-  `tipo` enum('REGISTRADO','INVITADO') DEFAULT NULL
+  `tipo` enum('REGISTRADO','INVITADO') DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 -- --------------------------------------------------------
 
@@ -72,12 +76,14 @@ CREATE TABLE `USUARIO` (
 --
 
 CREATE TABLE `ZAPATILLA` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,  -- Agregado AUTO_INCREMENT
   `modelo` varchar(45) DEFAULT NULL,
   `imagen` varchar(255) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
-  `precio` decimal(9,2) DEFAULT NULL
+  `precio` decimal(9,2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 
 --
 -- Insertar datos en la tabla `ZAPATILLA`
