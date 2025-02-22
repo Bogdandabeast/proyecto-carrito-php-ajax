@@ -317,28 +317,33 @@ formulario.addEventListener("submit", function(event){
     
     if(verifica) {    
         //crear un objeto con los valores del formulario ********* lo que me da problemas
-        let formData = new FormData();
-        formData.append('nombre', document.getElementById("nombre").value);
-        formData.append('apellidos', document.getElementById("apellidos").value);
-        formData.append('email', document.getElementById("email").value);
-        formData.append('clave', document.getElementById("clave").value);
-        formData.append('tipo', "REGISTRADO");
+        let datosForm = {
+            nombre: document.getElementById("nombre").value,
+            apellidos: document.getElementById("apellidos").value,
+            email: document.getElementById("email").value,
+            clave: document.getElementById("clave").value,
+            tipo: "REGISTRADO"
+        };
         //objeto con la configuracion de la base de datos
         let options = {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json' // Asegúrate de enviar los datos como JSON
+            },
+            body: JSON.stringify(datosForm) // Aquí pasamos los datos correctamente
         };
-        fetch('./Controller/registroEnvio.php', options)
+
+fetch('Controller/registroEnvio.php', options)
     .then(response => {
         if (!response.ok) {
             throw new Error("Error en la respuesta del servidor: " + response.statusText);
         }
-        return response.json();
+        return response.json(); // Esperamos una respuesta en formato JSON
     })
     .then(data => {
         if (data.success) {
             alert("Usuario registrado correctamente.");
-            window.location.href = "ruta_a_otra_pagina.html"; // Redirigir al usuario
+            window.location.href = "usuario.php"; // Redirigir al usuario
         } else {
             alert("Error al registrar usuario: " + data.message);
         }

@@ -17,8 +17,9 @@ try{
     echo 'Falló la conexión: ' . $e->getMessage();
 
 }finally{
-    echo "conexion exito";
+    // echo "conexion exito";
 }
+
 
 
 ?>
