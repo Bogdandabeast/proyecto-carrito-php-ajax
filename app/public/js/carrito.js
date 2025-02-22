@@ -130,18 +130,21 @@ function procesarCarrito(){
       if(datos.logeado == true){
         console.log("Esta logeado");
       }else{
-        console.log("No esta logeado");
+        //usuario no logeado
+        document.getElementById("panelCarrito").innerHTML += `
+        <div class="popup">
+            <div>
+            <h1>¿Tienes Cuenta?</h1>
+            <p>Inicia sesion y haz el pedido para tenerlo en tu cuenta</p>
+            <a href="login.php">Iniciar Sesion</a>
+            <button>Continuar como invitado</button>
+            </div>
+        </div>`;
       }
     });
 
 }
 
-function procesarCarritoUsuario(){
 
-}
-
-function procesarCarritoInvitado(){
-  
-}
 
 window.addEventListener("DOMContentLoaded", cargarPanel);
