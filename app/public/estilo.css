@@ -109,11 +109,10 @@ nav a:hover {
 }
 
 #opciones {
-  display: flex
-  ;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
 }
 
 
@@ -128,7 +127,6 @@ display: none;
   border-bottom: 2px solid #ddd;
   transition: border-color 0.3s;
   margin-bottom: 20px;
-  min-width: 335px;
 }
 #opciones input::placeholder {
   color: #aaa;
@@ -146,7 +144,6 @@ display: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 #zapatillas .zapatilla {
@@ -229,3 +226,126 @@ display: none;
     gap: 10px;
   }
 }
+/*estilos pagina de registro*/
+.formularioRegistro{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5%;
+
+}
+.formularioRegistro form{
+ display: flex;
+ flex-direction: column;
+ border: solid black 0px;
+ border-radius: 10px;
+ padding: 5%;
+ width: 35%;
+ box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+ transition: 0.3s;
+}
+.formularioRegistro form:hover{
+  transform: scale(1.1);
+ }
+.formularioRegistro form > a > img{
+  width: 90px;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  transition: 0.3s;
+}
+.formularioRegistro form > a > img:hover{
+  transform: scale(1.1);
+}
+.formularioRegistro form > a > img:active{
+  transform: scale(0.9);
+}
+.formularioRegistro form > a{
+  flex-direction: row;
+  align-self: center;
+}
+.formularioRegistro form > h2{
+  text-align: center;
+  margin-bottom: 2%;
+}
+.formularioRegistro form > span{
+  text-align: center;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  text-align: start;
+  padding-left: 3px;
+}
+.formularioRegistro form > span > img{
+  width: 20px;
+  margin-bottom: -3px;
+  margin-left: 4px;
+}
+.formularioRegistro form > label{
+  padding-left: 3px;
+  margin-top: 5px;
+}
+.formularioRegistro form > input{
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 20px;
+  border: solid black 1px;
+}
+
+.formularioRegistro form > button{
+  background-color: #ffed00;
+  margin-top: 5%;
+  padding: 2%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 40%;
+  border: solid black 0px;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+.formularioRegistro form > button:hover{
+  transform: scale(1.2);
+  cursor: pointer;
+  background-color: #a79b00;
+  color: white;
+}
+.formularioRegistro form > button:active{
+  transform: scale(1.0);
+  background-color: #d3c500;
+  color: rgb(61, 61, 61);
+}
+.formularioRegistro form > p{
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: -30px;
+}
+/*classes que voy a usar en verificacion de formulario*/
+.letraRoja{
+  color: red;
+}
+.letraVerde{
+  color:rgb(0, 194, 0)
+}
+.fondoRojo{
+  background-color: rgba(255, 0, 0, 0.555);
+}
+.aviso{
+  display: none;
+}
+/*classes que voy a usar en verificacion de formulario*/
+/*controles de media query*/
+@media (max-width: 768px) {
+  .formularioRegistro form{
+    width: 70%;
+   }
+   .formularioRegistro form > p{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: -10px;
+  }
+}
+/*controles de media query*/
+/*estilos pagina de registro*/

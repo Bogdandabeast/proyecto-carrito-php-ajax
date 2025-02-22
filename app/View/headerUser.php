@@ -15,7 +15,7 @@
 
         <a href="carrito.php" id="carrito" aria-label="Ver carrito de compras con 0 productos">
             <img src="public/img/iconoCarrito.png" alt="Ícono del carrito de compras"> 
-            <span id="cantidadCarrito" aria-live="polite">0</span>
+            <span aria-live="polite">0</span>
         </a>
     </nav>
 </header>
