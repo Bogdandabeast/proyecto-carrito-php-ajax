@@ -32,6 +32,7 @@
             <input type="text" id="email" name="email" placeholder="tu email.." required>
             <span id="emailSpan" class="aviso"></span>
 
+
             <!--campo clave-->
             <label for="">Clave</label>
             <input type="password" id="clave" name="clave" placeholder="tu clave.." required>

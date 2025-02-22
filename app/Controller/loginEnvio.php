@@ -7,11 +7,11 @@ header('Content-Type: application/json; charset=utf-8'); //define el header que 
 $max_size = 1024 * 1024; //tamaño max de json que recibimos, 1mb;
 
 //si el mime es un meme y no es un json mandar a tomar vientos
-if ($_SERVER['CONTENT_TYPE'] !== 'application/json') {
+/* if ($_SERVER['CONTENT_TYPE'] !== 'application/json') {
     http_response_code(415);
     echo json_encode(['error' => 'Se esperaba un tipo de contenido application/json.']);
     exit;
-}
+} */
 
 //coger archivo 
 $json = file_get_contents('php://input'); //
@@ -38,7 +38,9 @@ if (!isset($data['email']) || !is_string($data['email']) && !isset($data['clave'
     exit;
 }
     // Sanitizar y utilizar los datos
-    $nombre = $data['nombre'];
+    
 
-// Aquí puedes proceder a procesar los datos, por ejemplo, almacenarlos en una base de datos.
+    echo json_encode(["success" => true, "message" => "todo bien campeon."]);
+
+
 
