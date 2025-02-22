@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
+        let email_invitado = document.getElementById("email_invitado");
         let email = document.getElementById("email");
         let clave = document.getElementById("clave");
         let formulario = document.querySelector("form");
@@ -9,7 +10,8 @@ document.addEventListener("DOMContentLoaded", function(){
         const emailER = /^[A-Za-z0-9-]{3,20}@[A-Za-z0-9]{3,20}\.[A-Za-z]{2,3}$/;
         const claveER = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*\W).{8,}$/;
     
-        function emailV() {
+        function emailV(email) {
+
             if (email.value.trim() === "") {
                 emailSpan.classList.remove("letraVerde");
                 email.classList.add("fondoRojo");
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
     
-        function claveV() {
+        function claveV(clave) {
             if (clave.value.trim() === "") {
                 claveSpan.classList.remove("letraVerde");
                 clave.classList.add("fondoRojo");
@@ -101,15 +103,19 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
     
-        email.addEventListener("blur", emailV);
-        clave.addEventListener("blur", claveV);
+        email.addEventListener("blur", function() { emailV(email); });
+
+        clave.addEventListener("blur", function() { claveV(clave) });
+        email_invitado.addEventListener("blur", function() { emailV(email_invitado); });
+
+
     
         function verificarTodo() {
             let valido = true;
-            if (!emailV()) {
+            if (!emailV(email)) {
                 valido = false;
             }
-            if (!claveV()) {
+            if (!claveV(clave)) {
                 valido = false;
             }
             return valido;
@@ -124,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     method: 'POST',
                     body: JSON.stringify(formData)
                 };
-                console.log(options);
+                
     
                 fetch('./Controller/loginEnvio.php', options)
                     .then(response => {
@@ -150,7 +156,49 @@ document.addEventListener("DOMContentLoaded", function(){
                 claveV();
             }
         });
-    
+
+        document.getElementById("invitado").addEventListener("click", function() {
+            document.getElementById("formularioLogin").style.display = "none";
+            document.getElementById("formularioInvitado").style.display = "flex";
+        });
+
+        document.getElementById("login").addEventListener("click", function() {
+            document.getElementById("formularioLogin").style.display = "flex";
+            document.getElementById("formularioInvitado").style.display = "none";
+
+        });
+
+        document.getElementById("invitado_mandar").addEventListener("submit", function(e) {
+            e.preventDefault();
+            if (emailV()) {
+
+                let formData = {email:email.value};    
+                let options = {
+                    method: 'POST',
+                    body: JSON.stringify(formData)
+                };
+                fetch('./Controller/loginEnvio.php', options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error en la respuesta del servidor: " + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        alert("Usuario logeado correctamente.");
+                        window.location.href = "../invitado.php";
+                    } else {
+                        alert("Error al entrar como invitado: " + data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert("Ocurrió un error en la comunicación con el servidor.");
+                }); 
+        } 
+            
+    })
     
     
     

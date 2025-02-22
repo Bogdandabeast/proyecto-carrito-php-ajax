@@ -31,8 +31,6 @@
             <label for="email">Email</label>
             <input type="text" id="email" name="email" placeholder="tu email.." required>
             <span id="emailSpan" class="aviso"></span>
-
-
             <!--campo clave-->
             <label for="">Clave</label>
             <input type="password" id="clave" name="clave" placeholder="tu clave.." required>
@@ -40,8 +38,27 @@
 
             <!--boton registro-->
             <button>Entrar</button>
+            <p>tambien puedes entrar como <a href="#" id="invitado">Invitado</a></p>
             
         </form>
+        <form id="formularioInvitado">
+            <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
+            <h2>Iniciar session como invitado</h2>
+            <!--campo email-->
+            <label for="email_invitado">Email</label>
+            <input type="text" id="email_invitado" name="email" placeholder="tu email.." required>
+            <span id="emailSpan" class="aviso"></span>
+            <!--boton registro-->
+            <button id="invitado_mandar">Entrar</button>
+            <p>Entrar como <a href="#" id="login">usuario registrado</a></p>
+        </form>
+
+        <style>
+            #formularioInvitado {
+                display: none;
+            }
+        </style>
+
         </div>
     </main>
     <!--footer-->
