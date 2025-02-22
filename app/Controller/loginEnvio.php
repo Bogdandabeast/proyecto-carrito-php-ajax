@@ -37,10 +37,41 @@ if (!isset($data['email']) || !is_string($data['email']) && !isset($data['clave'
     echo json_encode(['error' => 'faltan campos para mandar o los campos son incorrectos']);
     exit;
 }
-    // Sanitizar y utilizar los datos
+    include("../Model/bbdd.php");
+
+    session_start();
+
+    $email = htmlspecialchars($data['email']);
+    $clave = $data['clave'];
+
+    $sql = "SELECT * FROM USUARIO WHERE email = ?";
+
+    try {
+        $sentencia = $conexion->prepare($sql);
+        $sentencia->execute([$email]);
+        $usuario = $sentencia -> fetch();
+
+
+
+        if($usuario && password_verify($clave, $usuario['clave'])) {
+
+            $_SESSION["id"] = $conexion->lastInsertId();
+
+            echo json_encode(["success" => true, "message" => "has entrado"]);
+
+
+
+        } else {
+            echo json_encode(["success" => false, "message" => "datos no coinciden"]);
+        }
+
+    } catch (PDOException $e) {
+        // Si ocurre una excepción, devolver un mensaje de error
+        echo json_encode(["success" => false, "message" => "Error: " . $e->getMessage()]);
+    }
     
 
-    echo json_encode(["success" => true, "message" => "todo bien campeon."]);
+    
 
 
 

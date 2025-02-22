@@ -11,7 +11,7 @@ if (isset($data['nombre'], $data['apellidos'], $data['email'], $data['clave'], $
 
     $hashed_password = password_hash($data['clave'], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO usuario(nombre, apellidos, email, clave, tipo) VALUES(:nombre, :apellidos, :email, :clave, :tipo)";
+    $sql = "INSERT INTO USUARIO (nombre, apellidos, email, clave, tipo) VALUES(:nombre, :apellidos, :email, :clave, :tipo)";
     
     try {
         $stmt = $conexion->prepare($sql);
