@@ -3,9 +3,7 @@
 
     <nav aria-label="Navegación principal">
         <ul id="links">
-            <li><a href="#" aria-label="Ver zapatillas">Zapatillas</a></li>
-            <li><a href="#" aria-label="Conoce más sobre nosotros">Sobre Nosotros</a></li>
-            <li><a href="#" aria-label="Contáctanos">Contacto</a></li>
+            <li><a href="index.php" aria-label="Ver zapatillas">Zapatillas</a></li>
         </ul>
 
         <ul id="guest" aria-label="Opciones de usuario">

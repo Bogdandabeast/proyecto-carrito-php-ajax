@@ -103,6 +103,7 @@ nav a:hover {
 
 #banner {
   width: 100%;
+  box-shadow: 0px 0px 10px #000;
   margin-bottom: 40px;
 }
 
@@ -148,25 +149,28 @@ nav a:hover {
 }
 
 #zapatillas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid
+  ;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      max-width: 1280px;
+      margin: 30px auto auto auto;
 }
 
 #zapatillas .zapatilla {
+  width: 100%;
   max-width: 350px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 5px 15px #aeaeae;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 20px;
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 #zapatillas .zapatilla:hover {
-  transform: translateY(-2px);
+  transform: translateY(-5px); 
   box-shadow: 0 10px 25px #6b6b6b;
 }
 
@@ -209,6 +213,7 @@ nav a:hover {
   position: absolute;
   font-size: 1rem;
   top: 20px;
+  right: 20px;
   padding: 12px;
   border-radius: 50%;
   fill: #000;
@@ -228,8 +233,8 @@ nav a:hover {
 
 #zapatillas .boton-compra:hover svg {
   fill: #fff;
-  cursor: pointer;
 }
+
 
 #panelCarrito {
   max-width: 700px;
