@@ -7,19 +7,15 @@ include '../Model/bbdd.php';
 // Obtener los datos del cuerpo de la solicitud (en formato JSON)
 $data = json_decode(file_get_contents("php://input"), true);
 
-// Verificar que los datos estén presentes
 if (isset($data['nombre'], $data['apellidos'], $data['email'], $data['clave'], $data['tipo'])) {
-    // Hash de la contraseña
+
     $hashed_password = password_hash($data['clave'], PASSWORD_DEFAULT);
 
-    // Preparar la consulta SQL con parámetros
     $sql = "INSERT INTO usuario(nombre, apellidos, email, clave, tipo) VALUES(:nombre, :apellidos, :email, :clave, :tipo)";
     
     try {
-        // Preparar la consulta
         $stmt = $conexion->prepare($sql);
 
-        // Enlazar los parámetros
         $stmt->bindParam(':nombre', $data['nombre']);
         $stmt->bindParam(':apellidos', $data['apellidos']);
         $stmt->bindParam(':email', $data['email']);
