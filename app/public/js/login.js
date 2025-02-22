@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function(){
                     .then(data => {
                         if (data.success) {
                             alert("Usuario logeado correctamente.");
-                            window.location.href = "../login.php";
+                            window.location.href = "../usuario.php";
                         } else {
                             alert("Error al logear usuario: " + data.message);
                         }
