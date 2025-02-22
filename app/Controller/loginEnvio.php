@@ -32,11 +32,15 @@ if (json_last_error() !== JSON_ERROR_NONE) {
     exit;
 }
 
-if (!isset($data['email']) || !is_string($data['email']) && !isset($data['clave']) || !is_string($data['clave']) ) {
-    http_response_code(400);
-    echo json_encode(['error' => 'faltan campos para mandar o los campos son incorrectos']);
-    exit;
-}
+
+
+
+
+
+
+
+if (isset($data['email']) && isset($data['clave'])) {
+
     include("../Model/bbdd.php");
 
     session_start();
@@ -49,29 +53,52 @@ if (!isset($data['email']) || !is_string($data['email']) && !isset($data['clave'
     try {
         $sentencia = $conexion->prepare($sql);
         $sentencia->execute([$email]);
-        $usuario = $sentencia -> fetch();
+        $usuario = $sentencia->fetch();
 
 
 
-        if($usuario && password_verify($clave, $usuario['clave'])) {
+        if ($usuario && password_verify($clave, $usuario['clave'])) {
 
             $_SESSION["id"] = $conexion->lastInsertId();
 
             echo json_encode(["success" => true, "message" => "has entrado"]);
-
-
-
         } else {
             echo json_encode(["success" => false, "message" => "datos no coinciden"]);
         }
-
     } catch (PDOException $e) {
-        // Si ocurre una excepción, devolver un mensaje de error
+
         echo json_encode(["success" => false, "message" => "Error: " . $e->getMessage()]);
     }
+} elseif(isset($data['email'])) {
+     {
+
+        include("../Model/bbdd.php");
     
-
+        session_start();
     
-
-
+        $email = htmlspecialchars($data['email']);
+    
+        $sql = "SELECT * FROM USUARIO WHERE email = ?";
+    
+        try {
+            $sentencia = $conexion->prepare($sql);
+            $sentencia->execute([$email]);
+            $usuario = $sentencia->fetch();
+    
+    
+    
+            if ($usuario && $usuario['tipo'] === 'INVITADO') {
+    
+                $_SESSION["id"] = $conexion->lastInsertId();
+    
+                echo json_encode(["success" => true, "message" => "has entrado"]);
+            } else {
+                echo json_encode(["success" => false, "message" => "datos no coinciden en el invitado"]);
+            }
+        } catch (PDOException $e) {
+    
+            echo json_encode(["success" => false, "message" => "Error: " . $e->getMessage()]);
+        }
+    }
+}
 
