@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="public/js/zapatillas.js"></script>
+    <script src="public/js/gestorCarrito.js"></script>
 </head>
 
 <body>

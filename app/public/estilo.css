@@ -358,6 +358,10 @@ nav a:hover {
   width: 40%;
 }
 
+#panelCarrito #seguir button:hover{
+  background-color: #0c2e59;
+}
+
 #panelCarrito #seguir strong {
 font-size: 1.5rem;
 }
@@ -434,7 +438,9 @@ text-decoration: none;
   background-color: #e0e0e0;
 }
 
-
+button:hover{
+  cursor: pointer;
+}
 
 @media (max-width: 768px) {
   header {
@@ -473,9 +479,7 @@ text-decoration: none;
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   transition: 0.3s;
 }
-.formularioRegistro form:hover {
-  transform: scale(1.1);
-}
+
 .formularioRegistro form > a > img {
   width: 90px;
   display: flex;
@@ -510,34 +514,35 @@ text-decoration: none;
   margin-left: 4px;
 }
 .formularioRegistro form > label {
-  padding-left: 3px;
-  margin-top: 5px;
+  margin-top: 10px;
+  font-size: 0.9rem;
 }
 .formularioRegistro form > input {
-  padding-left: 2%;
-  padding-right: 2%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  border-radius: 20px;
-  border: solid black 1px;
+  border-radius: 5px;
+  border: solid #acacac 1px;
+  padding: 10px 10px;
+  font-size: 1rem;
 }
 
 .formularioRegistro form > button {
-  background-color: #ffed00;
+  background-color:#116ee1;
   margin-top: 5%;
-  padding: 2%;
-  display: flex;
+  padding: 10px 10px;
+  display: flex
+;
   flex-direction: column;
   align-self: center;
-  width: 40%;
   border: solid black 0px;
-  border-radius: 20px;
+  border-radius: 5px;
   transition: 0.3s;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
 }
 .formularioRegistro form > button:hover {
-  transform: scale(1.2);
   cursor: pointer;
-  background-color: #a79b00;
+  background-color: #0c2e59;
   color: white;
 }
 .formularioRegistro form > button:active {
