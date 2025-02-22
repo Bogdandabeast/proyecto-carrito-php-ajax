@@ -343,7 +343,7 @@ fetch('Controller/registroEnvio.php', options)
     .then(data => {
         if (data.success) {
             alert("Usuario registrado correctamente.");
-            window.location.href = "usuario.php"; // Redirigir al usuario
+            window.location.href = "login.php"; // Redirigir al usuario
         } else {
             alert("Error al registrar usuario: " + data.message);
         }

@@ -41,6 +41,10 @@ nav ul {
   align-items: center;
 }
 
+svg{
+  vertical-align: middle;
+}
+
 nav a {
   color: #fff;
   text-decoration: none;
@@ -155,15 +159,15 @@ nav a:hover {
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px #aeaeae;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 #zapatillas .zapatilla:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px #6b6b6b;
 }
 
 #zapatillas img {
@@ -198,24 +202,38 @@ nav a:hover {
 }
 
 #zapatillas .boton-compra {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #424f57;
+  background-color: #ffffff;
   color: #fff;
-  text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
+  position: absolute;
+  font-size: 1rem;
+  top: 20px;
+  padding: 12px;
+  border-radius: 50%;
+  fill: #000;
+  box-shadow: 0px 0px 3px #000;
+}
+
+#zapatillas svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }
 
 #zapatillas .boton-compra:hover {
+  cursor: pointer;
   background-color: #000;
+}
+
+#zapatillas .boton-compra:hover svg {
+  fill: #fff;
   cursor: pointer;
 }
 
 #panelCarrito {
-  margin: 40px;
+  max-width: 700px;
+  margin: 40px auto auto auto;
 }
 #panelCarrito #zapatillas {
   display: flex;
@@ -223,7 +241,6 @@ nav a:hover {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  max-width: 700px;
   margin: auto;
   gap: 20px;
 }
@@ -231,6 +248,8 @@ nav a:hover {
 #panelCarrito h1 {
   text-align: center;
   margin-bottom: 40px;
+  border-bottom: 3px solid #e1e1e1;
+  padding-bottom: 10px;
 }
 
 #panelCarrito .articulo {
@@ -316,6 +335,37 @@ nav a:hover {
   text-align: center;
   padding: 2px;
 }
+
+#panelCarrito #seguir {
+  display: flex;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c9c9c9;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#panelCarrito #seguir button {
+  padding: 10px 20px;
+  background: #116ee1;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  width: 40%;
+}
+
+#panelCarrito #seguir strong {
+font-size: 1.5rem;
+}
+
+#panelCarrito .asegurado {
+  margin-top: 20px;
+  text-align: center;
+  }
 
 @media (max-width: 768px) {
   header {
