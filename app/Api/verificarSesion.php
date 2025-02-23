@@ -6,7 +6,7 @@ session_start();
 header("Content-Type:application/json");
 
 
-if(isset($_SESSION["usuarioID"])){
+if(isset($_SESSION["REGISTRADO"])){
 $mensaje = [
     "logeado"=> true
 ];

@@ -23,7 +23,7 @@
 
     <!--main-->
     <main>
-        <div class="formularioRegistro">
+        <div class="formularioSesion">
         <form action="" method="POST">
             <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
             <h2>Crear una cuenta DAWSHOP</h2>

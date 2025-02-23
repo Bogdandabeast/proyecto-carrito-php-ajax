@@ -55,7 +55,7 @@ function calcularTotal() {
   for (producto of carrito) {
     total += producto.precio * producto.cantidad;
   }
-
+  total = total.toFixed(2);
   return total;
 }
 
@@ -128,7 +128,7 @@ function procesarCarrito(){
     .then((resultado) => resultado.json())
     .then((datos) => {
       if(datos.logeado == true){
-        console.log("Esta logeado");
+        procesarPedidoUsuario()
       }else{
         //usuario no logeado
         document.getElementById("panelCarrito").innerHTML += `
@@ -145,6 +145,33 @@ function procesarCarrito(){
 
 }
 
+function procesarPedidoUsuario(){
+
+  let datosCarrito ={
+    "total": document.getElementById("totalCarrito").textContent,
+    "carrito":carrito
+  }
+let opciones = {
+  method:"POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body:JSON.stringify(datosCarrito)
+}
+fetch("API/procesarPedido.php",opciones)
+.then(respuesta => respuesta.json())
+.then(datos => {
+  console.log(datos);
+  if(datos.procesado == true){
+    console.log("procesado");
+  }else{
+    if(datos.procesado == false){
+      console.log(datos.mensaje);
+    }
+  }
+});
+
+}
 
 
 window.addEventListener("DOMContentLoaded", cargarPanel);

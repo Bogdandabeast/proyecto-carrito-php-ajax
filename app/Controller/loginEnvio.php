@@ -35,11 +35,6 @@ if (json_last_error() !== JSON_ERROR_NONE) {
 
 
 
-
-
-
-
-
 if (isset($data['email']) && isset($data['clave'])) {
 
     include("../Model/bbdd.php");
@@ -61,7 +56,7 @@ if (isset($data['email']) && isset($data['clave'])) {
 
         if ($usuario && password_verify($clave, $usuario['clave'])) {
 
-            $_SESSION["REGISTRADO"] = $conexion->lastInsertId();
+            $_SESSION["REGISTRADO"] = $usuario['id'];
 
             echo json_encode(["success" => true, "message" => "has entrado"]);
         } else {
@@ -87,12 +82,11 @@ if (isset($data['email']) && isset($data['clave'])) {
             $sentencia->execute([$email]);
             $usuario = $sentencia->fetch();
     
-    
-    
+
             if ($usuario && $usuario['tipo'] === 'INVITADO') {
     
-                $_SESSION["INVITADO"] = $conexion->lastInsertId();
-    
+                $_SESSION["INVITADO"] = $usuario['tipo'];
+            
                 echo json_encode(["success" => true, "message" => "has entrado"]);
             } else {
                 echo json_encode(["success" => false, "message" => "datos no coinciden en el invitado"]);

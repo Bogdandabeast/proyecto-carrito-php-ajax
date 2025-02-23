@@ -41,7 +41,7 @@ nav ul {
   align-items: center;
 }
 
-svg{
+svg {
   vertical-align: middle;
 }
 
@@ -59,6 +59,14 @@ nav #guest a {
   border: 1px solid;
   border-radius: 20px;
   padding: 5px 10px;
+}
+
+nav #usuario a {
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background: #6e0000;
+  color: #fff;
 }
 
 nav #carrito {
@@ -149,13 +157,12 @@ nav a:hover {
 }
 
 #zapatillas {
-  display: grid
-  ;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 20px;
-      justify-items: center;
-      max-width: 1280px;
-      margin: 30px auto auto auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  max-width: 1280px;
+  margin: 30px auto auto auto;
 }
 
 #zapatillas .zapatilla {
@@ -166,11 +173,11 @@ nav a:hover {
   overflow: hidden;
   box-shadow: 0 5px 15px #aeaeae;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #zapatillas .zapatilla:hover {
-  transform: translateY(-5px); 
+  transform: translateY(-5px);
   box-shadow: 0 10px 25px #6b6b6b;
 }
 
@@ -234,7 +241,6 @@ nav a:hover {
 #zapatillas .boton-compra:hover svg {
   fill: #fff;
 }
-
 
 #panelCarrito {
   max-width: 700px;
@@ -363,19 +369,18 @@ nav a:hover {
   width: 40%;
 }
 
-#panelCarrito #seguir button:hover{
+#panelCarrito #seguir button:hover {
   background-color: #0c2e59;
 }
 
 #panelCarrito #seguir strong {
-font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 #panelCarrito .asegurado {
   margin-top: 20px;
   text-align: center;
 }
-
 
 .popup {
   position: fixed;
@@ -387,7 +392,7 @@ font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000; 
+  z-index: 1000;
 }
 
 .popup > div {
@@ -396,8 +401,8 @@ font-size: 1.5rem;
   background: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
-  text-align: center; 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .popup h1 {
@@ -412,7 +417,8 @@ font-size: 1.5rem;
   margin-bottom: 20px;
 }
 
-.popup button ,.popup a{
+.popup button,
+.popup a {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
@@ -424,18 +430,18 @@ font-size: 1.5rem;
   display: inline-block;
 }
 
-.popup a  {
-  background-color: #007BFF;
+.popup a {
+  background-color: #007bff;
   color: white;
-text-decoration: none;
+  text-decoration: none;
 }
 
 .popup button:first-child:hover {
-  background-color: #0056b3; 
+  background-color: #0056b3;
 }
 
 .popup button:last-child {
-  background-color: #f1f1f1; 
+  background-color: #f1f1f1;
   color: #333;
 }
 
@@ -443,7 +449,7 @@ text-decoration: none;
   background-color: #e0e0e0;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 
@@ -465,19 +471,19 @@ button:hover{
   }
 }
 /*estilos pagina de registro*/
-.formularioRegistro {
+.formularioSesion {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 5%;
 }
-.formularioRegistro form {
+.formularioSesion form {
   display: flex;
   flex-direction: column;
   border: solid black 0px;
   border-radius: 10px;
-  padding: 5%;
+  padding: 20px;
   width: 35%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -485,56 +491,68 @@ button:hover{
   transition: 0.3s;
 }
 
-.formularioRegistro form > a > img {
+.formularioSesion form > a > img {
   width: 90px;
   display: flex;
   flex-direction: row;
   align-self: center;
   transition: 0.3s;
 }
-.formularioRegistro form > a > img:hover {
+
+.formularioSesion .otroInicio{
+  padding: 10px;
+  margin-top: 11px;
+  border: 2px solid #9a9a9a;
+  border-radius: 5px;
+  color: #5c5c5c;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  font-weight: 600;
+}
+.formularioSesion form > a > img:hover {
   transform: scale(1.1);
 }
-.formularioRegistro form > a > img:active {
+.formularioSesion form > a > img:active {
   transform: scale(0.9);
 }
-.formularioRegistro form > a {
+.formularioSesion form > a {
   flex-direction: row;
   align-self: center;
 }
-.formularioRegistro form > h2 {
+.formularioSesion form > h2 {
   text-align: center;
   margin-bottom: 2%;
 }
-.formularioRegistro form > span {
+.formularioSesion form > span {
   text-align: center;
   margin-bottom: 2%;
   margin-top: 2%;
   text-align: start;
   padding-left: 3px;
 }
-.formularioRegistro form > span > img {
+.formularioSesion form > span > img {
   width: 20px;
   margin-bottom: -3px;
   margin-left: 4px;
 }
-.formularioRegistro form > label {
+.formularioSesion form > label {
   margin-top: 10px;
   font-size: 0.9rem;
+  margin-bottom: 5px;
 }
-.formularioRegistro form > input {
+.formularioSesion form > input {
   border-radius: 5px;
   border: solid #acacac 1px;
   padding: 10px 10px;
   font-size: 1rem;
 }
 
-.formularioRegistro form > button {
-  background-color:#116ee1;
+.formularioSesion form > button {
+  background-color: #116ee1;
   margin-top: 5%;
   padding: 10px 10px;
-  display: flex
-;
+  display: flex;
   flex-direction: column;
   align-self: center;
   border: solid black 0px;
@@ -545,20 +563,19 @@ button:hover{
   font-weight: 700;
   color: #fff;
 }
-.formularioRegistro form > button:hover {
+.formularioSesion form > button:hover {
   cursor: pointer;
   background-color: #0c2e59;
   color: white;
 }
-.formularioRegistro form > button:active {
+.formularioSesion form > button:active {
   transform: scale(1);
   background-color: #d3c500;
   color: rgb(61, 61, 61);
 }
-.formularioRegistro form > p {
+.formularioSesion form > p {
   text-align: center;
   margin-top: 20px;
-  margin-bottom: -30px;
 }
 /*classes que voy a usar en verificacion de formulario*/
 .letraRoja {
@@ -576,10 +593,10 @@ button:hover{
 /*classes que voy a usar en verificacion de formulario*/
 /*controles de media query*/
 @media (max-width: 768px) {
-  .formularioRegistro form {
+  .formularioSesion form {
     width: 70%;
   }
-  .formularioRegistro form > p {
+  .formularioSesion form > p {
     text-align: center;
     margin-top: 20px;
     margin-bottom: -10px;
