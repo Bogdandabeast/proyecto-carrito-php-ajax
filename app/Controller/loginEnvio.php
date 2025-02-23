@@ -44,7 +44,7 @@ if (isset($data['email']) && isset($data['clave'])) {
     $email = htmlspecialchars($data['email']);
     $clave = $data['clave'];
 
-    $sql = "SELECT * FROM USUARIO WHERE email = ?";
+    $sql = "SELECT * FROM usuario WHERE email = ?";
 
     try {
         $sentencia = $conexion->prepare($sql);
@@ -75,7 +75,7 @@ if (isset($data['email']) && isset($data['clave'])) {
     
         $email = htmlspecialchars($data['email']);
     
-        $sql = "SELECT * FROM USUARIO WHERE email = ?";
+        $sql = "SELECT * FROM usuario WHERE email = ?";
     
         try {
             $sentencia = $conexion->prepare($sql);
@@ -85,7 +85,7 @@ if (isset($data['email']) && isset($data['clave'])) {
 
             if ($usuario && $usuario['tipo'] === 'INVITADO') {
     
-                $_SESSION["INVITADO"] = $usuario['tipo'];
+                $_SESSION["INVITADO"] = $usuario['id'];
             
                 echo json_encode(["success" => true, "message" => "has entrado"]);
             } else {

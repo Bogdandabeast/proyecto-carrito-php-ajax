@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,8 +15,8 @@
 </head>
 
 <body>
+    
     <?php include "Controller/header.php"; ?>
-
     <img id="banner" src="public/img/banner.png" alt="Banner promocional de DAWSHOP">
 
     <main id="inicio">
