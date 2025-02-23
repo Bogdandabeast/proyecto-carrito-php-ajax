@@ -130,7 +130,7 @@ function apellidosV(){
 //verificar email
 function emailV(){
     if(email.value.trim() == ""){
-          //remover valse con letra verde si caso ya tiene
+          //remover classe con letra verde si caso ya tiene
           emailSpan.classList.remove("letraVerde");
           //poner fondo rojo a campo
           email.classList.add("fondoRojo");
@@ -317,18 +317,23 @@ formulario.addEventListener("submit", function(event){
     
     if(verifica) {    
         //crear un objeto con los valores del formulario ********* lo que me da problemas
-        let formData = new FormData();
-        formData.append('nombre', document.getElementById("nombre").value);
-        formData.append('apellidos', document.getElementById("apellidos").value);
-        formData.append('email', document.getElementById("email").value);
-        formData.append('clave', document.getElementById("clave").value);
-        formData.append('tipo', "REGISTRADO");
+        let datosForm = {
+            nombre: document.getElementById("nombre").value,
+            apellidos: document.getElementById("apellidos").value,
+            email: document.getElementById("email").value,
+            clave: document.getElementById("clave").value,
+            tipo: "REGISTRADO"
+        };
         //objeto con la configuracion de la base de datos
         let options = {
             method: 'POST',
-            body: formData
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datosForm)
         };
-        fetch('./Controller/registroEnvio.php', options)
+
+fetch('Controller/registroEnvio.php', options)
     .then(response => {
         if (!response.ok) {
             throw new Error("Error en la respuesta del servidor: " + response.statusText);
@@ -336,17 +341,69 @@ formulario.addEventListener("submit", function(event){
         return response.json();
     })
     .then(data => {
+        const email = document.getElementById("email");
+        const emailSpan = document.getElementById("emailSpan");
+
         if (data.success) {
             alert("Usuario registrado correctamente.");
-            window.location.href = "ruta_a_otra_pagina.html"; // Redirigir al usuario
+            //redirigir el usuario a login
+            window.location.href = "login.php";
         } else {
-            alert("Error al registrar usuario: " + data.message);
+            //eliminar clases de validación positiva, si tiene
+            emailSpan.classList.remove("letraVerde");
+            
+            //fondo rojo al campo de email
+            email.classList.add("fondoRojo");
+
+            //mensaje de error
+            emailSpan.classList.remove("aviso");
+            //texto de error
+            emailSpan.textContent = data.message;
+            
+            //icono o imagen de error
+            let img = document.createElement("img");
+            img.setAttribute("src", "./public/img/emoji-frown-fill.svg");
+
+            //filtro rojo al icono
+            img.style.filter = "invert(24%) sepia(100%) saturate(2600%) hue-rotate(0deg) brightness(90%) contrast(100%)";
+
+            //agregar la imagen al emailSpan
+            emailSpan.appendChild(img);
+
+            //agregar clase de texto rojo
+            emailSpan.classList.add("letraRoja");
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert("Ocurrió un error en la comunicación con el servidor.");
+
+        const email = document.getElementById("email");
+        const emailSpan = document.getElementById("emailSpan");
+
+        //eliminar clases de validación positiva
+        emailSpan.classList.remove("letraVerde");
+
+        //añadir fondo rojo al campo de email
+        email.classList.add("fondoRojo");
+
+        //mostrar mensaje de error
+        emailSpan.classList.remove("aviso");
+        emailSpan.textContent = "Error de conexión con el servidor.";
+        
+        //crear el icono de error (emoji frown)
+        let img = document.createElement("img");
+        img.setAttribute("src", "./public/img/emoji-frown-fill.svg");
+
+        //aplicar el filtro rojo al icono
+        img.style.filter = "invert(24%) sepia(100%) saturate(2600%) hue-rotate(0deg) brightness(90%) contrast(100%)";
+
+        //agregar la imagen al emailSpan
+        emailSpan.appendChild(img);
+
+        //agregar clase de texto rojo
+        emailSpan.classList.add("letraRoja");
     });
+
     } else {
         nombreV();
         apellidosV();

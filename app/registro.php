@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,22 +29,22 @@
             <h2>Crear una cuenta DAWSHOP</h2>
             <!--campo nombre-->
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" value="maria">
+            <input type="text" id="nombre" name="nombre">
             <span id="nombreSpan" class="aviso"></span>
 
             <!--campo apellidos-->
             <label for="apellidos">Apellidos</label>
-            <input type="text" id="apellidos" name="apellidos" value="antonieta">
+            <input type="text" id="apellidos" name="apellidos">
             <span id="apellidosSpan" class="aviso"></span>
 
             <!--campo email-->
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="maria@hotmail.com">
+            <input type="text" id="email" name="email">
             <span id="emailSpan" class="aviso"></span>
 
             <!--campo clave-->
             <label for="">Clave</label>
-            <input type="password" id="clave" name="clave" value="msnmsnmsN9$">
+            <input type="password" id="clave" name="clave">
             <span id="claveSpan" class="aviso"></span>
 
             <!--boton registro-->

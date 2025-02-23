@@ -41,6 +41,10 @@ nav ul {
   align-items: center;
 }
 
+svg{
+  vertical-align: middle;
+}
+
 nav a {
   color: #fff;
   text-decoration: none;
@@ -67,15 +71,15 @@ nav #carrito img {
 }
 
 nav #carrito span {
-    position: absolute;
-    background: #ffffff;
-    color: #000000;
-    padding: 0px 3px;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    left: 17px;
-    top: -1px;
-    border: 3px solid #000000;
+  position: absolute;
+  background: #ffffff;
+  color: #000000;
+  padding: 0px 3px;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  left: 17px;
+  top: -1px;
+  border: 3px solid #000000;
 }
 
 nav a::after {
@@ -99,6 +103,7 @@ nav a:hover {
 
 #banner {
   width: 100%;
+  box-shadow: 0px 0px 10px #000;
   margin-bottom: 40px;
 }
 
@@ -115,18 +120,21 @@ nav a:hover {
   gap: 30px;
 }
 
-
-#opciones label{
-display: none;
+#opciones label {
+  display: none;
 }
 #opciones input,
 #opciones select {
   padding: 15px;
   font-size: 16px;
-  border: none;
-  border-bottom: 2px solid #ddd;
-  transition: border-color 0.3s;
-  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  max-width: 400px;
+  width: 100%;
+  border-radius: 5px;
+  background: url(img/svg/buscar.svg);
+  background-repeat: no-repeat;
+  margin: 7px;
+  background-position: calc(99% - 10px) 13px;
 }
 #opciones input::placeholder {
   color: #aaa;
@@ -141,25 +149,29 @@ display: none;
 }
 
 #zapatillas {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid
+  ;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      justify-items: center;
+      max-width: 1280px;
+      margin: 30px auto auto auto;
 }
 
 #zapatillas .zapatilla {
+  width: 100%;
   max-width: 350px;
   background: #fff;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px #aeaeae;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
 }
 
 #zapatillas .zapatilla:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 25px #6b6b6b;
 }
 
 #zapatillas img {
@@ -194,19 +206,245 @@ display: none;
 }
 
 #zapatillas .boton-compra {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #424f57;
+  background-color: #ffffff;
   color: #fff;
-  text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
+  position: absolute;
+  font-size: 1rem;
+  top: 20px;
+  right: 20px;
+  padding: 12px;
+  border-radius: 50%;
+  fill: #000;
+  box-shadow: 0px 0px 3px #000;
+}
+
+#zapatillas svg {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }
 
 #zapatillas .boton-compra:hover {
+  cursor: pointer;
   background-color: #000;
+}
+
+#zapatillas .boton-compra:hover svg {
+  fill: #fff;
+}
+
+
+#panelCarrito {
+  max-width: 700px;
+  margin: 40px auto auto auto;
+}
+#panelCarrito #zapatillas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: auto;
+  gap: 20px;
+}
+
+#panelCarrito h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  border-bottom: 3px solid #e1e1e1;
+  padding-bottom: 10px;
+}
+
+#panelCarrito .articulo {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  display: flex;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+#panelCarrito .articulo button {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  background: #ff3333;
+  border: none;
+  padding: 0px 10px;
+}
+
+#panelCarrito .articulo button:hover {
+  cursor: pointer;
+  transition: 1s;
+  background: #f17474;
+}
+
+#panelCarrito .articulo .info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#panelCarrito .articulo:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+#panelCarrito .articulo img {
+  width: 70px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+#panelCarrito .articulo p {
+  margin: 6px 0;
+  color: #333;
+  width: 300px;
+}
+
+#panelCarrito .articulo p:nth-child(2) {
+  font-weight: bold;
+  font-size: 1.1em;
+  text-align: left;
+}
+
+#panelCarrito .articulo p:nth-child(3) {
+  color: #e91e63;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#panelCarrito .articulo .cantidad {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+}
+
+#panelCarrito .articulo input {
+  max-width: 50px;
+  border-radius: 6px;
+  border: 1px solid #000000;
+  text-align: center;
+  padding: 2px;
+}
+
+#panelCarrito #seguir {
+  display: flex;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #c9c9c9;
+  padding: 10px;
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#panelCarrito #seguir button {
+  padding: 10px 20px;
+  background: #116ee1;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  width: 40%;
+}
+
+#panelCarrito #seguir button:hover{
+  background-color: #0c2e59;
+}
+
+#panelCarrito #seguir strong {
+font-size: 1.5rem;
+}
+
+#panelCarrito .asegurado {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+}
+
+.popup > div {
+  width: 100%;
+  max-width: 500px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+  text-align: center; 
+}
+
+.popup h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.popup p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.popup button ,.popup a{
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3sease;
+  display: inline-block;
+}
+
+.popup a  {
+  background-color: #007BFF;
+  color: white;
+text-decoration: none;
+}
+
+.popup button:first-child:hover {
+  background-color: #0056b3; 
+}
+
+.popup button:last-child {
+  background-color: #f1f1f1; 
+  color: #333;
+}
+
+.popup button:last-child:hover {
+  background-color: #e0e0e0;
+}
+
+button:hover{
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -227,121 +465,121 @@ display: none;
   }
 }
 /*estilos pagina de registro*/
-.formularioRegistro{
+.formularioRegistro {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-top: 5%;
+}
+.formularioRegistro form {
+  display: flex;
+  flex-direction: column;
+  border: solid black 0px;
+  border-radius: 10px;
+  padding: 5%;
+  width: 35%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: 0.3s;
+}
 
-}
-.formularioRegistro form{
- display: flex;
- flex-direction: column;
- border: solid black 0px;
- border-radius: 10px;
- padding: 5%;
- width: 35%;
- box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
- transition: 0.3s;
-}
-.formularioRegistro form:hover{
-  transform: scale(1.1);
- }
-.formularioRegistro form > a > img{
+.formularioRegistro form > a > img {
   width: 90px;
   display: flex;
   flex-direction: row;
   align-self: center;
   transition: 0.3s;
 }
-.formularioRegistro form > a > img:hover{
+.formularioRegistro form > a > img:hover {
   transform: scale(1.1);
 }
-.formularioRegistro form > a > img:active{
+.formularioRegistro form > a > img:active {
   transform: scale(0.9);
 }
-.formularioRegistro form > a{
+.formularioRegistro form > a {
   flex-direction: row;
   align-self: center;
 }
-.formularioRegistro form > h2{
+.formularioRegistro form > h2 {
   text-align: center;
   margin-bottom: 2%;
 }
-.formularioRegistro form > span{
+.formularioRegistro form > span {
   text-align: center;
   margin-bottom: 2%;
   margin-top: 2%;
   text-align: start;
   padding-left: 3px;
 }
-.formularioRegistro form > span > img{
+.formularioRegistro form > span > img {
   width: 20px;
   margin-bottom: -3px;
   margin-left: 4px;
 }
-.formularioRegistro form > label{
-  padding-left: 3px;
-  margin-top: 5px;
+.formularioRegistro form > label {
+  margin-top: 10px;
+  font-size: 0.9rem;
 }
-.formularioRegistro form > input{
-  padding-left: 2%;
-  padding-right: 2%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  border-radius: 20px;
-  border: solid black 1px;
+.formularioRegistro form > input {
+  border-radius: 5px;
+  border: solid #acacac 1px;
+  padding: 10px 10px;
+  font-size: 1rem;
 }
 
-.formularioRegistro form > button{
-  background-color: #ffed00;
+.formularioRegistro form > button {
+  background-color:#116ee1;
   margin-top: 5%;
-  padding: 2%;
-  display: flex;
+  padding: 10px 10px;
+  display: flex
+;
   flex-direction: column;
   align-self: center;
-  width: 40%;
   border: solid black 0px;
-  border-radius: 20px;
+  border-radius: 5px;
   transition: 0.3s;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
 }
-.formularioRegistro form > button:hover{
-  transform: scale(1.2);
+.formularioRegistro form > button:hover {
   cursor: pointer;
-  background-color: #a79b00;
+  background-color: #0c2e59;
   color: white;
 }
-.formularioRegistro form > button:active{
-  transform: scale(1.0);
+.formularioRegistro form > button:active {
+  transform: scale(1);
   background-color: #d3c500;
   color: rgb(61, 61, 61);
 }
-.formularioRegistro form > p{
+.formularioRegistro form > p {
   text-align: center;
   margin-top: 20px;
   margin-bottom: -30px;
 }
 /*classes que voy a usar en verificacion de formulario*/
-.letraRoja{
+.letraRoja {
   color: red;
 }
-.letraVerde{
-  color:rgb(0, 194, 0)
+.letraVerde {
+  color: rgb(0, 194, 0);
 }
-.fondoRojo{
+.fondoRojo {
   background-color: rgba(255, 0, 0, 0.555);
 }
-.aviso{
+.aviso {
   display: none;
 }
 /*classes que voy a usar en verificacion de formulario*/
 /*controles de media query*/
 @media (max-width: 768px) {
-  .formularioRegistro form{
+  .formularioRegistro form {
     width: 70%;
-   }
-   .formularioRegistro form > p{
+  }
+  .formularioRegistro form > p {
     text-align: center;
     margin-top: 20px;
     margin-bottom: -10px;
