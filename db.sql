@@ -1,15 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: mysql
--- Tiempo de generación: 20-02-2025 a las 10:29:39
--- Versión del servidor: 8.0.41
--- Versión de PHP: 8.2.27
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 23-02-2025 a las 13:58:36
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,131 +24,225 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PEDIDO`
+-- Estructura de tabla para la tabla `pedido`
 --
-DROP DATABASE IF EXISTS carrito;
 
-CREATE DATABASE carrito;
-
-USE carrito;
-
-CREATE TABLE `PEDIDO` (
-  `id` int NOT NULL AUTO_INCREMENT,  -- Agregado AUTO_INCREMENT
-  `idUsuario` int DEFAULT NULL,
+CREATE TABLE `pedido` (
+  `id` int(11) NOT NULL,
+  `idUsuario` int(11) DEFAULT NULL,
   `precioTotal` decimal(9,2) DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)  -- La clave primaria debe estar especificada
+  `fecha` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedido`
+--
+
+INSERT INTO `pedido` (`id`, `idUsuario`, `precioTotal`, `fecha`) VALUES
+(1, 120, 2.00, '2025-02-23 13:26:01'),
+(3, 120, 2.00, '2025-02-23 13:26:56'),
+(4, 120, 2.00, '2025-02-23 13:27:58'),
+(5, 120, 2.00, '2025-02-23 13:28:04'),
+(6, 120, 2.00, '2025-02-23 13:28:48'),
+(7, 120, 2.00, '2025-02-23 13:29:01'),
+(8, 120, 2.00, '2025-02-23 13:29:16'),
+(9, 120, 2.00, '2025-02-23 13:33:50'),
+(10, 120, 2.00, '2025-02-23 13:34:30'),
+(11, 120, 2.00, '2025-02-23 13:35:01'),
+(12, 120, 2.00, '2025-02-23 13:35:31'),
+(13, 400, 2.00, '2025-02-23 13:36:05'),
+(14, 400, 2.00, '2025-02-23 13:37:33'),
+(15, 400, 2.00, '2025-02-23 13:39:01'),
+(16, 400, 2.00, '2025-02-23 13:39:49'),
+(17, 400, 2.00, '2025-02-23 13:39:51'),
+(18, 400, 2.00, '2025-02-23 13:39:52'),
+(19, 400, 2.00, '2025-02-23 13:40:13'),
+(20, 400, 2.00, '2025-02-23 13:40:28'),
+(21, 400, 2.00, '2025-02-23 13:40:38'),
+(22, 400, 2.00, '2025-02-23 13:41:19'),
+(23, 400, 2.00, '2025-02-23 13:41:19'),
+(24, 400, 2.00, '2025-02-23 13:47:22'),
+(25, 400, 2.00, '2025-02-23 13:47:22'),
+(26, 400, 2.00, '2025-02-23 13:47:27'),
+(27, 400, 2.00, '2025-02-23 13:47:27'),
+(28, 400, 2.00, '2025-02-23 13:49:25'),
+(29, 400, 2.00, '2025-02-23 13:49:25'),
+(30, 0, 2.00, '2025-02-23 13:49:38'),
+(31, 0, 2.00, '2025-02-23 13:49:38'),
+(32, 0, 2.00, '2025-02-23 13:50:12'),
+(33, 0, 2.00, '2025-02-23 13:50:12'),
+(34, 0, 2.00, '2025-02-23 13:50:55'),
+(35, 0, 2.00, '2025-02-23 13:50:55'),
+(36, 0, 2.00, '2025-02-23 13:51:25'),
+(37, 0, 2.00, '2025-02-23 13:51:25'),
+(38, 0, 2.00, '2025-02-23 13:51:50'),
+(39, 0, 2.00, '2025-02-23 13:51:50'),
+(40, 0, 2.00, '2025-02-23 13:52:20'),
+(41, 0, 2.00, '2025-02-23 13:52:20'),
+(42, 0, 2.00, '2025-02-23 13:52:44'),
+(43, 0, 2.00, '2025-02-23 13:52:44'),
+(44, 0, 2.00, '2025-02-23 13:54:35'),
+(45, 0, 2.00, '2025-02-23 13:54:35'),
+(46, 0, 2.00, '2025-02-23 13:55:24'),
+(47, 0, 2.00, '2025-02-23 13:55:24');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `PEDIDO_ZAPATILLA`
+-- Estructura de tabla para la tabla `pedido_zapatilla`
 --
 
-CREATE TABLE `PEDIDO_ZAPATILLA` (
-  `idPedido` int NOT NULL,
-  `idZapatilla` int NOT NULL,
-  `cantidad` int DEFAULT NULL
+CREATE TABLE `pedido_zapatilla` (
+  `idPedido` int(11) NOT NULL,
+  `idZapatilla` int(11) NOT NULL,
+  `cantidad` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pedido_zapatilla`
+--
+
+INSERT INTO `pedido_zapatilla` (`idPedido`, `idZapatilla`, `cantidad`) VALUES
+(11, 60, 2),
+(12, 3, 2),
+(13, 3, 2),
+(13, 4, 2),
+(13, 5, 2),
+(14, 3, 2),
+(14, 4, 2),
+(14, 5, 2),
+(15, 3, 2),
+(15, 4, 2),
+(15, 5, 2),
+(16, 3, 2),
+(16, 4, 2),
+(16, 5, 2),
+(17, 3, 2),
+(17, 4, 2),
+(17, 5, 2),
+(18, 3, 2),
+(18, 4, 2),
+(18, 5, 2),
+(19, 3, 2),
+(19, 4, 2),
+(19, 5, 2),
+(20, 3, 2),
+(20, 4, 2),
+(20, 5, 2),
+(21, 3, 2),
+(21, 4, 2),
+(21, 5, 2),
+(23, 3, 2),
+(23, 4, 2),
+(23, 5, 2),
+(25, 3, 2),
+(25, 4, 2),
+(25, 5, 2),
+(27, 3, 2),
+(27, 4, 2),
+(27, 5, 2),
+(29, 3, 2),
+(29, 4, 2),
+(29, 5, 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `USUARIO`
+-- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE `USUARIO` (
-  `id` int NOT NULL AUTO_INCREMENT,  -- Agregado AUTO_INCREMENT
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `apellidos` varchar(150) DEFAULT NULL,
   `email` varchar(250) DEFAULT NULL,
   `clave` varchar(255) DEFAULT NULL,
-  `tipo` enum('REGISTRADO','INVITADO') DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
+  `tipo` enum('REGISTRADO','INVITADO') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `apellidos`, `email`, `clave`, `tipo`) VALUES
+(2, 'Sammy', 'Dian Yañez', 'sammydianya@gmail.com', '$2y$10$bKLYBlVc6MlQW9d6RO0l6eAoeRtwf.V277TR5gCmV4et9M9Ir47L.', 'REGISTRADO'),
+(3, 'maria', 'antonieta', 'maria@hotmail.com', '$2y$10$0hUbkHcEp2QaFUB0plnKxedkczogN6oa88Dkf2ad.dZZ1jHUtddpS', 'REGISTRADO');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `ZAPATILLA`
+-- Estructura de tabla para la tabla `zapatilla`
 --
 
-CREATE TABLE `ZAPATILLA` (
-  `id` int NOT NULL AUTO_INCREMENT,  -- Agregado AUTO_INCREMENT
+CREATE TABLE `zapatilla` (
+  `id` int(11) NOT NULL,
   `modelo` varchar(45) DEFAULT NULL,
   `imagen` varchar(255) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
-  `precio` decimal(9,2) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `precio` decimal(9,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
 --
--- Insertar datos en la tabla `ZAPATILLA`
+-- Volcado de datos para la tabla `zapatilla`
 --
 
-INSERT INTO `ZAPATILLA` (`id`, `modelo`, `imagen`, `descripcion`, `precio`) VALUES
-(1, 'Air Max 90', 'airmax90.jpg', 'Zapatillas clásicas de Nike con diseño retro.', 129.99),
-(2, 'Yeezy Boost 350', 'yeezy350.jpg', 'Zapatillas icónicas de Kanye West y Adidas.', 220.00),
-(3, 'Converse Chuck Taylor', 'chucktaylor.jpg', 'Clásicas Converse de lona en color blanco.', 59.99),
-(4, 'Puma Suede Classic', 'pumasuede.jpg', 'Zapatillas de ante clásicas y versátiles.', 74.99),
-(5, 'Vans Old Skool', 'vansoldskool.jpg', 'Modelo clásico de Vans con banda lateral.', 64.99),
-(6, 'New Balance 574', 'nb574.jpg', 'Modelo retro de New Balance con gran comodidad.', 89.99),
-(7, 'Jordan 1 Retro', 'jordan1.jpg', 'Zapatillas icónicas de baloncesto.', 170.00),
-(8, 'Reebok Classic', 'reebokclassic.jpg', 'Zapatillas retro en cuero blanco.', 79.99),
-(9, 'Asics Gel-Lyte III', 'asicsgellyte3.jpg', 'Modelo de running clásico con suela de gel.', 119.99),
-(10, 'Fila Disruptor II', 'filadisruptor.jpg', 'Zapatillas chunky con suela gruesa.', 85.00);
+INSERT INTO `zapatilla` (`id`, `modelo`, `imagen`, `descripcion`, `precio`) VALUES
+(1, 'Air Max 90', 'airmax90.png', 'Zapatillas clásicas de Nike con diseño retro.', 129.99),
+(2, 'Yeezy Boost 350', 'yezzebost.png', 'Zapatillas icónicas de Kanye West y Adidas.', 220.00),
+(3, 'Converse Chuck Taylor', 'converse-chuck.png', 'Clásicas Converse de lona en color blanco.', 59.99),
+(4, 'Puma Suede Classic', 'Suede-Classic.png', 'Zapatillas de ante clásicas y versátiles.', 74.99),
+(5, 'Vans Old Skool', 'oldskool.png', 'Modelo clásico de Vans con banda lateral.', 64.99),
+(6, 'New Balance 574', 'new_balance.png', 'Modelo retro de New Balance con gran comodidad.', 89.99),
+(7, 'Jordan 1 Retro', 'air-jordan-1.png', 'Zapatillas icónicas de baloncesto.', 170.00),
+(8, 'Reebok Classic', 'rebook.png', 'Zapatillas retro en cuero blanco.', 79.99),
+(9, 'Asics Gel-Lyte III', 'asics.png', 'Modelo de running clásico con suela de gel.', 119.99),
+(10, 'Fila Disruptor II', 'fila.png', 'Zapatillas chunky con suela gruesa.', 85.00);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `PEDIDO`
+-- Indices de la tabla `pedido`
 --
-ALTER TABLE `PEDIDO`
+ALTER TABLE `pedido`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
--- Indices de la tabla `PEDIDO_ZAPATILLA`
+-- Indices de la tabla `pedido_zapatilla`
 --
-ALTER TABLE `PEDIDO_ZAPATILLA`
-  ADD PRIMARY KEY (`idPedido`,`idZapatilla`),
+ALTER TABLE `pedido_zapatilla`
   ADD KEY `idZapatilla` (`idZapatilla`);
 
 --
--- Indices de la tabla `USUARIO`
+-- Indices de la tabla `usuario`
 --
-ALTER TABLE `USUARIO`
+ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indices de la tabla `ZAPATILLA`
+-- Indices de la tabla `zapatilla`
 --
-ALTER TABLE `ZAPATILLA`
+ALTER TABLE `zapatilla`
   ADD PRIMARY KEY (`id`);
 
 --
--- Restricciones para tablas volcadas
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- Filtros para la tabla `PEDIDO`
+-- AUTO_INCREMENT de la tabla `pedido`
 --
-ALTER TABLE `PEDIDO`
-  ADD CONSTRAINT `PEDIDO_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `USUARIO` (`id`);
+ALTER TABLE `pedido`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
--- Filtros para la tabla `PEDIDO_ZAPATILLA`
+-- AUTO_INCREMENT de la tabla `usuario`
 --
-ALTER TABLE `PEDIDO_ZAPATILLA`
-  ADD CONSTRAINT `PEDIDO_ZAPATILLA_ibfk_1` FOREIGN KEY (`idPedido`) REFERENCES `PEDIDO` (`id`),
-  ADD CONSTRAINT `PEDIDO_ZAPATILLA_ibfk_2` FOREIGN KEY (`idZapatilla`) REFERENCES `ZAPATILLA` (`id`);
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

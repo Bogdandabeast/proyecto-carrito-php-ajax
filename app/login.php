@@ -25,10 +25,10 @@
 
     <!--main-->
     <main>
-        <div class="formularioRegistro">
+        <div class="formularioSesion">
             <form id="formularioLogin">
                 <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
-                <h2>Iniciar session con tu cuenta DAW</h2>
+                <h2>Iniciar Session</h2>
                 <!--campo email-->
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" placeholder="tu email.." required>
@@ -40,7 +40,7 @@
 
 
                 <button>Entrar</button>
-                <p>Entrar como <a href="#" id="invitado">invitado</a></p>
+                <a href="#" id="invitado" class="otroInicio">Entrar Como invitado</a>
 
             </form>
             <form id="formularioInvitado">
@@ -51,7 +51,7 @@
                 <input type="text" id="email_invitado" name="email" placeholder="tu email.." required>
                 <span id="emailSpan" class="aviso"></span>
                 <button id="invitado_mandar">Entrar</button>
-                <p>Entrar como <a href="#" id="login">usuario registrado</a></p>
+                <a href="#" id="login" class="otroInicio">Entrar Como Usuario</a>
             </form>
 
             <style>
