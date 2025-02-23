@@ -147,29 +147,48 @@ function procesarCarrito(){
 
 function procesarPedidoUsuario(){
 
-  let datosCarrito ={
-    "total": document.getElementById("totalCarrito").textContent,
-    "carrito":carrito
-  }
-let opciones = {
-  method:"POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body:JSON.stringify(datosCarrito)
-}
-fetch("API/procesarPedido.php",opciones)
-.then(respuesta => respuesta.json())
-.then(datos => {
-  console.log(datos);
-  if(datos.procesado == true){
-    console.log("procesado");
-  }else{
-    if(datos.procesado == false){
-      console.log(datos.mensaje);
+  if (carrito.length > 0) {
+
+    let datosCarrito ={
+      "total": document.getElementById("totalCarrito").textContent,
+      "carrito":carrito
     }
+  let opciones = {
+    method:"POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body:JSON.stringify(datosCarrito)
   }
-});
+  fetch("API/procesarPedido.php",opciones)
+  .then(respuesta => respuesta.json())
+  .then(datos => {
+    console.log(datos);
+    if(datos.procesado == true){
+      carrito = [];
+      guardarCarrito();
+      cargarPanel(); 
+      document.getElementById("panelCarrito").innerHTML += `
+      <div class="popup">
+          <div>
+          <h1>Pedido Realizado</h1>
+          <div class="alerta correcto">Proceso</div>
+          <p>Inicia y mira tus pedidos y los estados</p>
+          <a href="login.php">Ver mis Pedidos</a>
+          </div>
+      </div>`;
+  
+  
+    }else{
+      if(datos.procesado == false){
+        console.log(datos.mensaje);
+      }
+    }
+  });
+  }else{
+    document.getElementById("zapatillas").innerHTML = `<div class="alerta error">No hay zapatillas para procesar</div>`;
+  }
+
 
 }
 

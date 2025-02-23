@@ -449,6 +449,26 @@ nav a:hover {
   background-color: #e0e0e0;
 }
 
+.alerta{
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.correcto{
+  background: #a0ff79;
+  border: 2px solid #3bcb00;
+  color: #173f07;
+}
+
+.error {
+  background: #f8d7da;
+  border: 2px solid #dc3545;
+  color: #721c24;
+}
+
+
 button:hover {
   cursor: pointer;
 }
