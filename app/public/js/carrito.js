@@ -172,7 +172,7 @@ function procesarPedidoUsuario(){
       <div class="popup">
           <div>
           <h1>Pedido Realizado</h1>
-          <div class="alerta correcto">Proceso</div>
+          <div class="alerta correcto">Registrado Correctamente</div>
           <p>Inicia y mira tus pedidos y los estados</p>
           <a href="login.php">Ver mis Pedidos</a>
           </div>

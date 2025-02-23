@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 img.setAttribute("src", "./public/img/emoji-frown-fill.svg");
                 img.style.filter = "invert(24%) sepia(100%) saturate(2600%) hue-rotate(0deg) brightness(90%) contrast(100%)";
     
-                claveSpan.textContent = "La clave debe tener al menos 8 caracteres, con mayúsculas, minúsculas, un número y un carácter especial";
+                claveSpan.innerHTML = "La clave debe tener al menos <br> 8 caracteres <br> mayúsculas, minúsculas <br> un número<br>un carácter especial";
                 claveSpan.appendChild(img);
                 claveSpan.classList.add("letraRoja");
     
@@ -103,10 +103,10 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
     
-        email.addEventListener("blur", function() { emailV(email) });
+        email.addEventListener("keydown", function() { emailV(email) });
 
-        clave.addEventListener("blur", function() { claveV(clave) });
-        email_invitado.addEventListener("blur", function() { emailV(email_invitado) });
+        clave.addEventListener("change", function() { claveV(clave) });
+        email_invitado.addEventListener("change", function() { emailV(email_invitado) });
 
 
     

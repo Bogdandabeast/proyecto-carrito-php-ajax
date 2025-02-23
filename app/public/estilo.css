@@ -62,11 +62,12 @@ nav #guest a {
 }
 
 nav #usuario a {
-  border: 1px solid;
-  border-radius: 20px;
+  border: 1px solid #8c3838;
+  border-radius: 5px;
   padding: 5px 10px;
-  background: #6e0000;
+  background: #6e0000fa;
   color: #fff;
+  font-size: 0.9rem;
 }
 
 nav #carrito {
@@ -457,8 +458,8 @@ nav a:hover {
 }
 
 .correcto{
-  background: #a0ff79;
-  border: 2px solid #3bcb00;
+  background: #cdffb8;
+  border: 1px solid #3bcb00;
   color: #173f07;
 }
 
@@ -545,11 +546,11 @@ button:hover {
   margin-bottom: 2%;
 }
 .formularioSesion form > span {
-  text-align: center;
   margin-bottom: 2%;
   margin-top: 2%;
-  text-align: start;
+  text-align: left;
   padding-left: 3px;
+  font-size: 0.9rem;
 }
 .formularioSesion form > span > img {
   width: 20px;
@@ -604,8 +605,9 @@ button:hover {
 .letraVerde {
   color: rgb(0, 194, 0);
 }
-.fondoRojo {
-  background-color: rgba(255, 0, 0, 0.555);
+.formularioSesion form  .fondoRojo {
+  background-color: #ff00003d;
+  border: 1px solid #e90f0f;
 }
 .aviso {
   display: none;
