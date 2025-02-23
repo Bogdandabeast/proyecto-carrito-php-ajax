@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
     <script src="./public/js/login.js"></script>
     <!--Script-->
 </head>
+
 <body>
     <!--header-->
     <?php include "Controller/header.php"; ?>
@@ -24,43 +26,43 @@
     <!--main-->
     <main>
         <div class="formularioRegistro">
-        <form id="formularioLogin">
-            <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
-            <h2>Iniciar session con tu cuenta DAW</h2>
-            <!--campo email-->
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="tu email.." required>
-            <span id="emailSpan" class="aviso"></span>
-            <!--campo clave-->
-            <label for="">Clave</label>
-            <input type="password" id="clave" name="clave" placeholder="tu clave.." required>
-            <span id="claveSpan" class="aviso"></span>
+            <form id="formularioLogin">
+                <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
+                <h2>Iniciar session con tu cuenta DAW</h2>
+                <!--campo email-->
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email" placeholder="tu email.." required>
+                <span id="emailSpan" class="aviso"></span>
+                <!--campo clave-->
+                <label for="">Clave</label>
+                <input type="password" id="clave" name="clave" placeholder="tu clave.." required>
+                <span id="claveSpan" class="aviso"></span>
 
-            <!--boton registro-->
-            <button>Entrar</button>
-            <p>tambien puedes entrar como <a href="#" id="invitado">Invitado</a></p>
-            
-        </form>
-        <form id="formularioInvitado">
-            <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
-            <h2>Iniciar session como invitado</h2>
-            <!--campo email-->
-            <label for="email_invitado">Email</label>
-            <input type="text" id="email_invitado" name="email" placeholder="tu email.." required>
-            <span id="emailSpan" class="aviso"></span>
-            <!--boton registro-->
-            <button id="invitado_mandar">Entrar</button>
-            <p>Entrar como <a href="#" id="login">usuario registrado</a></p>
-        </form>
 
-        <style>
-            #formularioInvitado {
-                display: none;
-            }
-        </style>
+                <button>Entrar</button>
+                <p>Entrar como <a href="#" id="invitado">invitado</a></p>
+
+            </form>
+            <form id="formularioInvitado">
+                <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
+                <h2>Iniciar session como invitado</h2>
+                <!--campo email-->
+                <label for="email_invitado">Email</label>
+                <input type="text" id="email_invitado" name="email" placeholder="tu email.." required>
+                <span id="emailSpan" class="aviso"></span>
+                <button id="invitado_mandar">Entrar</button>
+                <p>Entrar como <a href="#" id="login">usuario registrado</a></p>
+            </form>
+
+            <style>
+                #formularioInvitado {
+                    display: none;
+                }
+            </style>
 
         </div>
     </main>
     <!--footer-->
 </body>
+
 </html>

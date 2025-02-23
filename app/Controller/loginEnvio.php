@@ -16,6 +16,7 @@ $max_size = 1024 * 1024; //tamaño max de json que recibimos, 1mb;
 //coger archivo 
 $json = file_get_contents('php://input'); //
 
+
 //comprobar tamaño
 if (strlen($json) > $max_size) {
     http_response_code(413);
@@ -55,11 +56,12 @@ if (isset($data['email']) && isset($data['clave'])) {
         $sentencia->execute([$email]);
         $usuario = $sentencia->fetch();
 
+        
 
 
         if ($usuario && password_verify($clave, $usuario['clave'])) {
 
-            $_SESSION["id"] = $conexion->lastInsertId();
+            $_SESSION["REGISTRADO"] = $conexion->lastInsertId();
 
             echo json_encode(["success" => true, "message" => "has entrado"]);
         } else {
@@ -89,7 +91,7 @@ if (isset($data['email']) && isset($data['clave'])) {
     
             if ($usuario && $usuario['tipo'] === 'INVITADO') {
     
-                $_SESSION["id"] = $conexion->lastInsertId();
+                $_SESSION["INVITADO"] = $conexion->lastInsertId();
     
                 echo json_encode(["success" => true, "message" => "has entrado"]);
             } else {

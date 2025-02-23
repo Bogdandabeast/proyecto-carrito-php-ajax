@@ -103,10 +103,10 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         }
     
-        email.addEventListener("blur", function() { emailV(email); });
+        email.addEventListener("blur", function() { emailV(email) });
 
         clave.addEventListener("blur", function() { claveV(clave) });
-        email_invitado.addEventListener("blur", function() { emailV(email_invitado); });
+        email_invitado.addEventListener("blur", function() { emailV(email_invitado) });
 
 
     
@@ -152,8 +152,8 @@ document.addEventListener("DOMContentLoaded", function(){
                         alert("Ocurrió un error en la comunicación con el servidor.");
                     });
             } else {
-                emailV();
-                claveV();
+                emailV(email);
+                claveV(clave);
             }
         });
 
@@ -168,9 +168,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
         });
 
-        document.getElementById("invitado_mandar").addEventListener("submit", function(e) {
+        document.getElementById("formularioInvitado").addEventListener("submit", function(e) {
             e.preventDefault();
-            if (emailV()) {
+            if (emailV(email_invitado)) {
 
                 let formData = {email:email.value};    
                 let options = {
