@@ -130,7 +130,7 @@ function apellidosV(){
 //verificar email
 function emailV(){
     if(email.value.trim() == ""){
-          //remover valse con letra verde si caso ya tiene
+          //remover classe con letra verde si caso ya tiene
           emailSpan.classList.remove("letraVerde");
           //poner fondo rojo a campo
           email.classList.add("fondoRojo");
@@ -328,9 +328,9 @@ formulario.addEventListener("submit", function(event){
         let options = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json' // Asegúrate de enviar los datos como JSON
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(datosForm) // Aquí pasamos los datos correctamente
+            body: JSON.stringify(datosForm)
         };
 
 fetch('Controller/registroEnvio.php', options)
@@ -338,20 +338,72 @@ fetch('Controller/registroEnvio.php', options)
         if (!response.ok) {
             throw new Error("Error en la respuesta del servidor: " + response.statusText);
         }
-        return response.json(); // Esperamos una respuesta en formato JSON
+        return response.json();
     })
     .then(data => {
+        const email = document.getElementById("email");
+        const emailSpan = document.getElementById("emailSpan");
+
         if (data.success) {
             alert("Usuario registrado correctamente.");
-            window.location.href = "login.php"; // Redirigir al usuario
+            //redirigir el usuario a login
+            window.location.href = "login.php";
         } else {
-            alert("Error al registrar usuario: " + data.message);
+            //eliminar clases de validación positiva, si tiene
+            emailSpan.classList.remove("letraVerde");
+            
+            //fondo rojo al campo de email
+            email.classList.add("fondoRojo");
+
+            //mensaje de error
+            emailSpan.classList.remove("aviso");
+            //texto de error
+            emailSpan.textContent = data.message;
+            
+            //icono o imagen de error
+            let img = document.createElement("img");
+            img.setAttribute("src", "./public/img/emoji-frown-fill.svg");
+
+            //filtro rojo al icono
+            img.style.filter = "invert(24%) sepia(100%) saturate(2600%) hue-rotate(0deg) brightness(90%) contrast(100%)";
+
+            //agregar la imagen al emailSpan
+            emailSpan.appendChild(img);
+
+            //agregar clase de texto rojo
+            emailSpan.classList.add("letraRoja");
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert("Ocurrió un error en la comunicación con el servidor.");
+
+        const email = document.getElementById("email");
+        const emailSpan = document.getElementById("emailSpan");
+
+        //eliminar clases de validación positiva
+        emailSpan.classList.remove("letraVerde");
+
+        //añadir fondo rojo al campo de email
+        email.classList.add("fondoRojo");
+
+        //mostrar mensaje de error
+        emailSpan.classList.remove("aviso");
+        emailSpan.textContent = "Error de conexión con el servidor.";
+        
+        //crear el icono de error (emoji frown)
+        let img = document.createElement("img");
+        img.setAttribute("src", "./public/img/emoji-frown-fill.svg");
+
+        //aplicar el filtro rojo al icono
+        img.style.filter = "invert(24%) sepia(100%) saturate(2600%) hue-rotate(0deg) brightness(90%) contrast(100%)";
+
+        //agregar la imagen al emailSpan
+        emailSpan.appendChild(img);
+
+        //agregar clase de texto rojo
+        emailSpan.classList.add("letraRoja");
     });
+
     } else {
         nombreV();
         apellidosV();
