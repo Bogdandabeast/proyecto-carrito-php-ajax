@@ -58,7 +58,7 @@ function buscarZapatilla(buscar) {
     body: JSON.stringify(busqueda),
   };
 
-  fetch("API/buscadorZapatillas.php", opciones)
+  fetch("./API/buscadorZapatillas.php", opciones)
     .then((resultado) => resultado.json())
     .then((datos) => {
       const zapatillas = document.getElementById("zapatillas");
