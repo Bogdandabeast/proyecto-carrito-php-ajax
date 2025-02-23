@@ -124,7 +124,7 @@ function cargarPanel() {
 // Proceso
 function procesarCarrito(){
 
-  fetch("API/verificarSesion.php")
+  fetch("./API/verificarSesion.php")
     .then((resultado) => resultado.json())
     .then((datos) => {
       if(datos.logeado == true){
@@ -160,7 +160,7 @@ function procesarPedidoUsuario(){
     },
     body:JSON.stringify(datosCarrito)
   }
-  fetch("API/procesarPedido.php",opciones)
+  fetch("./API/procesarPedido.php",opciones)
   .then(respuesta => respuesta.json())
   .then(datos => {
     console.log(datos);
