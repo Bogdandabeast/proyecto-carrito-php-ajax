@@ -1,32 +1,75 @@
 <?php
 session_start();
-//Habilitar errores para depuración
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 
+header('Content-Type: application/json');
 
 if (!isset($_SESSION["REGISTRADO"])) {
-    echo json_encode(['error' => 'No esta iniciada la session.']);
+    echo json_encode(['success' => false, 'error' => 'No esta iniciada la sesión.']);
     exit;
 }
 
 include("../Model/bbdd.php");
 
-
-// Consulta SQL
-$sql = " SELECT * FROM pedido JOIN pedido_zapatilla ON pedido.id = pedido_zapatilla.idPedido JOIN zapatilla ON pedido_zapatilla.idZapatilla = zapatilla.id WHERE pedido.idUsuario = :idUsuario";
+// Consulta SQL mejorada
+$sql = "SELECT 
+            pedido.id AS pedido_id,
+            pedido.precioTotal AS total,
+            pedido.fecha AS pedido_fecha,
+            pedido_zapatilla.idZapatilla AS id_zapatilla,
+            pedido_zapatilla.cantidad AS cantidad,
+            zapatilla.modelo AS modelo,
+            zapatilla.imagen AS imagen,
+            zapatilla.precio AS precio
+            
+        FROM pedido 
+        JOIN pedido_zapatilla ON pedido.id = pedido_zapatilla.idPedido 
+        LEFT JOIN zapatilla ON pedido_zapatilla.idZapatilla = zapatilla.id  
+        WHERE pedido.idUsuario = :idUsuario ORDER BY pedido_id DESC" ;
 
 try {
-
     $idUsuario = $_SESSION["REGISTRADO"];
     $sentencia = $conexion->prepare($sql);
     $sentencia->bindParam(':idUsuario', $idUsuario, PDO::PARAM_INT);
     $sentencia->execute();
     $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
-    echo json_encode(["success" => true, "message" => $resultados]);
-} catch (PDOException $e) {
+    $carrito = [];
 
+    foreach ($resultados as $fila) {
+        $pedidoId = $fila['pedido_id'];
+
+        if (!isset($carrito[$pedidoId])) {
+            // Inicia el carrito con el pedido
+            $carrito[$pedidoId] = [
+                'idPedido' => $pedidoId,
+                'fecha' => $fila['pedido_fecha'],
+                'total' => $fila['total'],
+                'zapatillas' => [],
+                
+            ];
+        }
+
+        if (!empty($fila['id_zapatilla'])) {
+            // Si no hay datos de la zapatilla (null), asignamos valores predeterminados
+            $modelo = !empty($fila['modelo']) ? $fila['modelo'] : 'Modelo no disponible';
+            $imagen = !empty($fila['imagen']) ? $fila['imagen'] : 'imagen_no_disponible.png';
+
+            // Agregamos la zapatilla al carrito
+            $carrito[$pedidoId]['zapatillas'][] = [
+                'idZapatilla' => $fila['id_zapatilla'],
+                'cantidad' => $fila['cantidad'],
+                'modelo' => $modelo,
+                'imagen' => $imagen,
+                'precio' => $fila['precio']
+            ];
+        }
+    }
+
+    // Reindexar los pedidos para que sea un array numérico
+    $carrito = array_values($carrito);
+
+    echo json_encode(["success" => true, "pedidos" => $carrito], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+} catch (PDOException $e) {
     echo json_encode(["success" => false, "message" => "Error: " . $e->getMessage()]);
 }
+?>

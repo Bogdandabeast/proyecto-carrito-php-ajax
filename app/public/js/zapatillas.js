@@ -19,26 +19,34 @@ function cargarCarrito() {
     const carritoData = JSON.parse(localStorage.getItem("carrito"));
     carrito = [];
     carritoData.forEach((item) => {
-      carrito.push(new Producto(item.id, item.modelo, item.descripcion, item.precio, item.imagen, item.cantidad));
+      carrito.push(
+        new Producto(
+          item.id,
+          item.modelo,
+          item.descripcion,
+          item.precio,
+          item.imagen,
+          item.cantidad
+        )
+      );
     });
   }
 
+  mostrarCantidad();
+}
+
+function mostrarCantidad() {
   let cantidadTotal = 0;
   carrito.forEach((item) => {
-    cantidadTotal += item.cantidad;
+    cantidadTotal = cantidadTotal + parseInt(item.cantidad);
   });
+
   document.getElementById("cantidadCarrito").innerHTML = cantidadTotal;
 }
 
-
 function guardarCarrito() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
-
-  let cantidadTotal = 0;
-  carrito.forEach((item) => {
-    cantidadTotal += item.cantidad;
-  });
-  document.getElementById("cantidadCarrito").innerHTML = cantidadTotal;
+  mostrarCantidad();
 }
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -47,6 +55,8 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function buscarZapatilla(buscar) {
+  const zapatillas = document.getElementById("zapatillas");
+
   zapatillasLista = [];
   const busqueda = {
     articulo: -1,
@@ -57,11 +67,13 @@ function buscarZapatilla(buscar) {
     method: "POST",
     body: JSON.stringify(busqueda),
   };
+  zapatillas.innerHTML =` <div class="loadingio-spinner-dual-ball-2by998twmg8"><div class="ldio-yzaezf3dcmj">
+<div></div><div></div><div></div>
+</div><p>Buscando...</p></div>`;
 
-  fetch("./API/buscadorZapatillas.php", opciones)
+  fetch("./Api/buscadorZapatillas.php", opciones)
     .then((resultado) => resultado.json())
     .then((datos) => {
-      const zapatillas = document.getElementById("zapatillas");
       zapatillas.innerHTML = "";
 
       if (datos.length > 0) {
@@ -76,6 +88,8 @@ function buscarZapatilla(buscar) {
 
           zapatillasLista.push(producto);
 
+          zapatillas.style.display = "grid";
+          zapatillas.style.justifyContent  = "";
           zapatillas.innerHTML += `
             <article class="zapatilla">
                 <img src="public/img/zapatillas/${producto.imagen}" alt="Zapatillas ${producto.modelo}">
@@ -88,8 +102,10 @@ function buscarZapatilla(buscar) {
             </article>`;
         }
       } else {
+        zapatillas.style.display = "flex";
+        zapatillas.style.justifyContent  = "center";
         zapatillas.innerHTML =
-          "No existen zapatillas con el texto introducido como modelo";
+          "<p>No existen zapatillas con el texto introducido como modelo</p>";
       }
 
       let botones = document.querySelectorAll(".boton-compra");
@@ -109,14 +125,16 @@ function buscarZapatilla(buscar) {
             if (productoEnCarrito) {
               productoEnCarrito.cantidad += 1;
             } else {
-              carrito.push(new Producto(
-                productoSeleccionado.id,
-                productoSeleccionado.modelo,
-                productoSeleccionado.descripcion,
-                productoSeleccionado.precio,
-                productoSeleccionado.imagen,
-                1
-              ));
+              carrito.push(
+                new Producto(
+                  productoSeleccionado.id,
+                  productoSeleccionado.modelo,
+                  productoSeleccionado.descripcion,
+                  productoSeleccionado.precio,
+                  productoSeleccionado.imagen,
+                  1
+                )
+              );
             }
 
             guardarCarrito();

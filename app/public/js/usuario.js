@@ -1,10 +1,6 @@
-document.addEventListener("DOMContentLoaded",function(){
+window.addEventListener("DOMContentLoaded",function(){
 
     cargarPedidos();
-
-
-
-
 });
 
 function cargarPedidos() {
@@ -16,23 +12,43 @@ function cargarPedidos() {
         return response.json();
     })
     .then(data => {
-        if (data.success) {
+        if (data.success == true) {
             const mostrar = document.getElementById("panelPedidos");
-            data.message.forEach(item => {
+            mostrar.innerHTML = ""; // Limpiar contenido anterior
+
+            console.log(data);
+
+            data.pedidos.forEach(pedido => {
                 const pedidoSection = document.createElement('section');
-                pedidoSection.className = 'pedidoUsuario';
+                pedidoSection.className = 'pedido';
                 pedidoSection.innerHTML = `
-                  <h3>Pedido #${item.idPedido}</h3>
-                  <p><strong>Modelo:</strong> ${item.modelo}</p>
-                  <p><strong>Descripción:</strong> ${item.descripcion}</p>
-                  <p><strong>Precio:</strong> ${item.precio}</p>
-                  <p><strong>Cantidad:</strong> ${item.cantidad}</p>
-                  <p><strong>Precio Total:</strong> ${item.precioTotal}</p>
-                  <p><strong>Fecha:</strong> ${item.fecha}</p>
-                  <img src="public/img/zapatillas/${item.imagen}" alt="${item.modelo}">
+                    <h3>Pedido #${pedido.idPedido}</h3>
+                    <p><strong>Fecha:</strong> ${pedido.fecha}</p>
+                    <div class="zapatillas">
+                        <h4>Zapatillas:</h4>
+                    </div>
+                    <span>Total ${pedido.total}</span>
+
                 `;
+
+                const zapatillasDiv = pedidoSection.querySelector('.zapatillas');
+
+
+                pedido.zapatillas.forEach(zapatilla => {
+                    const zapatillaDiv = document.createElement('div');
+                    zapatillaDiv.className = 'zapatillaItem';
+                    zapatillaDiv.innerHTML = `
+                        <img src="public/img/zapatillas/${zapatilla.imagen}" alt="Zapatilla ${zapatilla.imagen}" width="100">
+                        <p><strong>Cantidad:</strong> ${zapatilla.cantidad}</p>
+                        <p><strong>Modelo:</strong> ${zapatilla.modelo}</p>
+                        <p class="precio"> ${zapatilla.precio}</p>
+
+                    `;
+                    zapatillasDiv.appendChild(zapatillaDiv);
+                });
+
                 mostrar.appendChild(pedidoSection);
-              });
+            });
         } else {
             alert("Error al recibir datos: " + data.message);
         }
@@ -41,11 +57,8 @@ function cargarPedidos() {
         console.error('Error:', error);
         alert("Ocurrió un error en la comunicación con el servidor.");
     });
+}
 
-
-
-
-    };
 
 
 

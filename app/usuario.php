@@ -18,14 +18,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="public/js/usuario.js"></script>
+    <script src="./public/js/gestorCarrito.js"></script>
 </head>
 
 <body>
-    <?php include "Controller/header.php"; ?>
+    <?php include "Controller/header.php";?>
     <img id="banner" src="public/img/banner.png" alt="Banner promocional de DAWSHOP">
 
-    <main>
-        <h1>Tus pedidos</h1>
+    <main id="misPedidos">
+        <h1>Mis pedidos</h1>
         <div id="panelPedidos"></div>
 
 

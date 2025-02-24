@@ -1,9 +1,9 @@
 <?php
 
-$servidor = "mysql";
-$usuario = "user";
+$servidor = "127.0.0.1";
+$usuario = "root";
 $bbdd = "carrito";
-$password = "userpassword";
+$password = "";
 
 try {
 

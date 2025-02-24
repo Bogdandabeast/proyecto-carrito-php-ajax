@@ -57,6 +57,7 @@ if (isset($data['email']) && isset($data['clave'])) {
         if ($usuario && password_verify($clave, $usuario['clave'])) {
 
             $_SESSION["REGISTRADO"] = $usuario['id'];
+            $_SESSION["nombreUsuario"] = $usuario['nombre'];
 
             echo json_encode(["success" => true, "message" => "has entrado"]);
         } else {

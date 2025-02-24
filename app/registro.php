@@ -15,6 +15,7 @@
 
     <!--Script-->
     <script src="./public/js/registro.js"></script>
+    <script src="./public/js/gestorCarrito.js"></script>
     <!--Script-->
 </head>
 <body>

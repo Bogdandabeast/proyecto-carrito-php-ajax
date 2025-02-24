@@ -16,12 +16,18 @@
 
     <!--Script-->
     <script src="./public/js/login.js"></script>
+    <script src="./public/js/gestorCarrito.js"></script>
     <!--Script-->
 </head>
 
 <body>
     <!--header-->
-    <?php include "Controller/header.php"; ?>
+    <?php include "Controller/header.php"; 
+    if(isset($_SESSION["REGISTRADO"])){
+        header("location: usuario.php");
+    }
+    
+    ?>
     <!--header-->
 
     <!--main-->

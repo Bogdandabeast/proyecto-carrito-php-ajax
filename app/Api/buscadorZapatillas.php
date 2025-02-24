@@ -2,6 +2,8 @@
 
 include "../Model/bbdd.php";
 
+sleep(1);
+
 // Obtener datos del cuerpo de la solicitud POST
 $data = json_decode(file_get_contents('php://input'), true);
 

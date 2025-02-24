@@ -33,17 +33,14 @@ function cargarCarrito() {
   mostrarCantidad();
 }
 
-
-function mostrarCantidad(){
-   let cantidadTotal = 0;
+function mostrarCantidad() {
+  let cantidadTotal = 0;
   carrito.forEach((item) => {
-  cantidadTotal = cantidadTotal + parseInt(item.cantidad);
-
+    cantidadTotal = cantidadTotal + parseInt(item.cantidad);
   });
 
   document.getElementById("cantidadCarrito").innerHTML = cantidadTotal;
 }
-
 
 function guardarCarrito() {
   localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -58,8 +55,6 @@ function calcularTotal() {
   total = total.toFixed(2);
   return total;
 }
-
-
 
 function cargarPanel() {
   const panelZapatillas = document.getElementById("zapatillas");
@@ -89,47 +84,41 @@ function cargarPanel() {
   cantidades = document.querySelectorAll(".cantidad-input");
   eliminaciones = document.querySelectorAll(".eliminar");
 
-  for( cantidad of cantidades){
-    cantidad.addEventListener("change",(cantidad) => {
-
-      for(let producto in carrito){
-        if(carrito[producto].id == cantidad.target.dataset.articuloid){
-
+  for (cantidad of cantidades) {
+    cantidad.addEventListener("change", (cantidad) => {
+      for (let producto in carrito) {
+        if (carrito[producto].id == cantidad.target.dataset.articuloid) {
           carrito[producto].cantidad = cantidad.target.value;
           guardarCarrito();
           cargarPanel();
         }
-      } 
+      }
     });
   }
 
-  for(eliminar of eliminaciones){
-    eliminar.addEventListener("click",(elemento) => {
-
-      for( let producto in carrito){
-        if(carrito[producto].id == elemento.target.dataset.articuloid ){
-          carrito.splice(producto,1);;
+  for (eliminar of eliminaciones) {
+    eliminar.addEventListener("click", (elemento) => {
+      for (let producto in carrito) {
+        if (carrito[producto].id == elemento.target.dataset.articuloid) {
+          carrito.splice(producto, 1);
           guardarCarrito();
           cargarPanel();
         }
-      } 
+      }
     });
   }
-
 
   document.getElementById("totalCarrito").textContent = calcularTotal() + "€";
 }
 
-
 // Proceso
-function procesarCarrito(){
-
-  fetch("./API/verificarSesion.php")
+function procesarCarrito() {
+  fetch("./Api/verificarSesion.php")
     .then((resultado) => resultado.json())
     .then((datos) => {
-      if(datos.logeado == true){
-        procesarPedidoUsuario()
-      }else{
+      if (datos.logeado == true) {
+        procesarPedidoUsuario();
+      } else {
         //usuario no logeado
         document.getElementById("panelCarrito").innerHTML += `
         <div class="popup">
@@ -137,38 +126,102 @@ function procesarCarrito(){
             <h1>¿Tienes Cuenta?</h1>
             <p>Inicia sesion y haz el pedido para tenerlo en tu cuenta</p>
             <a href="login.php">Iniciar Sesion</a>
-            <button>Continuar como invitado</button>
+            <button id="continuarInvitado">Continuar como invitado</button>
             </div>
         </div>`;
+
+        let botonInvitado = document.getElementById("continuarInvitado");
+
+        botonInvitado.addEventListener("click", () => {
+          procesarPedidoInvitado();
+        });
       }
     });
-
 }
 
-function procesarPedidoUsuario(){
+function procesarPedidoInvitado() {
+  console.log("Procesar Invitado");
+  const popup = document.querySelector(".popup");
+  popup.remove();
 
+  document.getElementById("panelCarrito").innerHTML += `
+<div class="popup">
+    <div>
+    <h1>Continuar Invitado</h1>
+    <p>Introduce tu email para que puedas rastrear tu pedido</p>
+    <form id="registroInvitado">
+    <label>Email</label>
+    <input type="email" value="" required>
+    <button>Procesar</button>
+    </form>
+    </div>
+</div>`;
+
+  const formularioInvitado = document.getElementById("registroInvitado");
+
+  formularioInvitado.addEventListener("submit", (elemento) => {
+    elemento.preventDefault();
+    let emailInvitado = formularioInvitado.children[1].value;
+
+    let datosCarrito = {
+      total: document.getElementById("totalCarrito").textContent,
+      carrito: carrito,
+      email:emailInvitado
+    };
+    let opciones = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(datosCarrito),
+    };
+    fetch("./Api/procesarPedido.php", opciones)
+      .then((respuesta) => respuesta.json())
+      .then((datos) => {
+        console.log(datos);
+        if (datos.procesado == true) {
+          carrito = [];
+          guardarCarrito();
+          cargarPanel();
+          document.getElementById("panelCarrito").innerHTML += `
+    <div class="popup">
+        <div>
+        <h1>Pedido Realizado</h1>
+        <div class="alerta correcto">Registrado Correctamente</div>
+        <p>${datos.mensaje}</p>
+        <a href="login.php">Ver mis Pedidos</a>
+        </div>
+    </div>`;
+        } else {
+          if (datos.procesado == false) {
+            console.log(datos.mensaje);
+          }
+        }
+      });
+  });
+}
+function procesarPedidoUsuario() {
   if (carrito.length > 0) {
-
-    let datosCarrito ={
-      "total": document.getElementById("totalCarrito").textContent,
-      "carrito":carrito
-    }
-  let opciones = {
-    method:"POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body:JSON.stringify(datosCarrito)
-  }
-  fetch("./API/procesarPedido.php",opciones)
-  .then(respuesta => respuesta.json())
-  .then(datos => {
-    console.log(datos);
-    if(datos.procesado == true){
-      carrito = [];
-      guardarCarrito();
-      cargarPanel(); 
-      document.getElementById("panelCarrito").innerHTML += `
+    let datosCarrito = {
+      total: document.getElementById("totalCarrito").textContent,
+      carrito: carrito,
+    };
+    let opciones = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(datosCarrito),
+    };
+    fetch("./Api/procesarPedido.php", opciones)
+      .then((respuesta) => respuesta.json())
+      .then((datos) => {
+        console.log(datos);
+        if (datos.procesado == true) {
+          carrito = [];
+          guardarCarrito();
+          cargarPanel();
+          document.getElementById("panelCarrito").innerHTML += `
       <div class="popup">
           <div>
           <h1>Pedido Realizado</h1>
@@ -177,20 +230,17 @@ function procesarPedidoUsuario(){
           <a href="login.php">Ver mis Pedidos</a>
           </div>
       </div>`;
-  
-  
-    }else{
-      if(datos.procesado == false){
-        console.log(datos.mensaje);
-      }
-    }
-  });
-  }else{
-    document.getElementById("zapatillas").innerHTML = `<div class="alerta error">No hay zapatillas para procesar</div>`;
+        } else {
+          if (datos.procesado == false) {
+            console.log(datos.mensaje);
+          }
+        }
+      });
+  } else {
+    document.getElementById(
+      "zapatillas"
+    ).innerHTML = `<div class="alerta error">No hay zapatillas para procesar</div>`;
   }
-
-
 }
-
 
 window.addEventListener("DOMContentLoaded", cargarPanel);
