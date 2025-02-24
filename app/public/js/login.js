@@ -197,10 +197,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(data => {
                     if (data.success) {
-                        alert("Usuario logeado correctamente.");
                         window.location.href = "usuario.php";
                     } else {
-                        alert("Error al logear usuario: " + data.message);
+                        document.getElementById("informeUsuario").innerHTML += `<div class="alerta error">${data.message}</div>`;
                     }
                 })
                 .catch(error => {
@@ -242,10 +241,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(data => {
                     if (data.success) {
-                        alert("Usuario logeado correctamente.");
-                        window.location.href = "usuario.php?email=${encodeURIComponent(email_invitado.value)}&idPedido=${encodeURIComponent(codigo_pedido.value)}";
+                        let codigoLimpio = codigo_pedido.value.replace(/^#/, '');
+                        window.location.href = `invitado.php?email=${email_invitado.value}&idPedido=${codigoLimpio}`;
                     } else {
-                        alert("Error al entrar como invitado: " + data.message);
+                        document.getElementById("informeInvitado").innerHTML += `<div class="alerta error">${data.message}</div>`;
                     }
                 })
                 .catch(error => {

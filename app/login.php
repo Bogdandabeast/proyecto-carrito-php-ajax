@@ -35,7 +35,10 @@
         <div class="formularioSesion">
             <form id="formularioLogin">
                 <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
-                <h2>Iniciar Session</h2>
+
+                
+                <h2>Iniciar Sesion <span>como Usuario</span></h2>
+                <div id="informeUsuario"></div>
                 <!--campo email-->
                 <label for="email">Email</label>
                 <input type="text" id="email" name="email" placeholder="tu email.." required autocomplete="off">
@@ -52,7 +55,8 @@
             </form>
             <form id="formularioInvitado">
                 <a href="./index.php"><img src="./public/img/logo.svg" alt="DawShop"></a>
-                <h2>Iniciar session como invitado</h2>
+                <h2>Iniciar Sesion <span>como Invitado</span></h2>
+                <div id="informeInvitado"></div>
                 <!--campo email-->
                 <label for="email_invitado">Email</label>
                 <input type="text" id="email_invitado" name="email" placeholder="tu email.." required>

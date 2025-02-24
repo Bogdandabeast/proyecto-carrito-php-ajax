@@ -17,7 +17,6 @@ if(!isset($email) || !isset($idPedido)) {
 
 include("../Model/bbdd.php");
 
-// Consulta SQL modificada para buscar por email y idPedido
 $sql = "SELECT 
             pedido.id AS pedido_id,
             pedido.precioTotal AS total,

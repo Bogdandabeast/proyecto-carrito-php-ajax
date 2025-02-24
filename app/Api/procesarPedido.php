@@ -9,11 +9,10 @@ if(isset($_SESSION["REGISTRADO"])){
     $data = json_decode(file_get_contents('php://input'), true);
     header('Content-Type: application/json');
 
-    $total = str_replace("€","",$data['total']);
     
     $pedido = $conexion->prepare("INSERT INTO pedido (idUsuario,precioTotal) VALUES (:idUsuario,:precio)");
     $pedido->bindParam(':idUsuario', $_SESSION["REGISTRADO"]);
-    $pedido->bindParam(':precio',$total);
+    $pedido->bindParam(':precio', $data['total']);
     $pedido->execute();
 
     if( $pedido->execute()){
@@ -44,10 +43,8 @@ if(isset($_SESSION["REGISTRADO"])){
 
     // Registrar Invitado
             include "../Model/bbdd.php";
-            $registroInvitado = $conexion->prepare('INSERT INTO usuario (email, tipo) VALUES (:email, "INVITADO")');
+            $registroInvitado = $conexion->prepare('INSERT INTO USUARIO (email, tipo) VALUES (:email, "INVITADO")');
             $registroInvitado->bindParam(':email', $data['email']);
-
-            $total = str_replace("€","",$data['total']);
             
             if ($registroInvitado->execute()) {
                 //volver mensaje de exito
@@ -55,7 +52,7 @@ if(isset($_SESSION["REGISTRADO"])){
                 $idUsuario = $conexion->lastInsertId();
                 $pedido = $conexion->prepare("INSERT INTO pedido (idUsuario,precioTotal) VALUES (:idUsuario,:precio)");
                 $pedido->bindParam(':idUsuario', $idUsuario);
-                $pedido->bindParam(':precio', $total);
+                $pedido->bindParam(':precio', $data['total']);
     
 
                 if($pedido->execute()){
@@ -64,7 +61,7 @@ if(isset($_SESSION["REGISTRADO"])){
                     foreach($data['carrito'] as $producto){
                         $agregarZapatilla = $conexion->prepare("INSERT INTO pedido_zapatilla (idPedido,idZapatilla,cantidad) VALUES (:idpedido,:idzapatilla,:cantidad)");
                         $agregarZapatilla->bindParam(':idpedido', $idPedido);
-                        $agregarZapatilla->bindParam(':idzapatilla', $idUsuario);
+                        $agregarZapatilla->bindParam(':idzapatilla', $producto["id"]);
                         $agregarZapatilla->bindParam(':cantidad', $producto["cantidad"]);
                         $agregarZapatilla->execute();
                     }   

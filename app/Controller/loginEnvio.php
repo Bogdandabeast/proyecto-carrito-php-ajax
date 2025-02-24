@@ -96,7 +96,7 @@ if (isset($data['email']) && isset($data['clave'])) {
             
                 echo json_encode(["success" => true, "message" => "has entrado"]);
             } else {
-                echo json_encode(["success" => false, "message" => "datos no coinciden en el invitado"]);
+                echo json_encode(["success" => false, "message" => "Datos no coinciden en el invitado"]);
             }
         } catch (PDOException $e) {
     

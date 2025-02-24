@@ -71,7 +71,7 @@ function cargarPanel() {
   <p class="modelo">${zapatilla.modelo}</p>
 </div>
 
-<input type="number" data-articuloid="${zapatilla.id}" value="${zapatilla.cantidad}" class="cantidad-input">
+<input type="number" data-articuloid="${zapatilla.id}" value="${zapatilla.cantidad}" class="cantidad-input" min="1">
 <p class="precio">${zapatilla.precio}</p>
 
  <button class="eliminar" data-articuloid="${zapatilla.id}">    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg></button>
@@ -82,7 +82,7 @@ function cargarPanel() {
   }
 
   cantidades = document.querySelectorAll(".cantidad-input");
-  eliminaciones = document.querySelectorAll(".eliminar");
+
 
   for (cantidad of cantidades) {
     cantidad.addEventListener("change", (cantidad) => {
@@ -96,16 +96,20 @@ function cargarPanel() {
     });
   }
 
+  eliminaciones = document.querySelectorAll(".eliminar");
   for (eliminar of eliminaciones) {
     eliminar.addEventListener("click", (elemento) => {
+      const articuloId = elemento.target.closest("button").dataset.articuloid;
       for (let producto in carrito) {
-        if (carrito[producto].id == elemento.target.dataset.articuloid) {
+        if (carrito[producto].id == articuloId) {
           carrito.splice(producto, 1);
           guardarCarrito();
           cargarPanel();
+          break; // Salimos del bucle después de eliminar
         }
       }
     });
+    
   }
 
   document.getElementById("totalCarrito").textContent = calcularTotal() + "€";
@@ -194,7 +198,14 @@ function procesarPedidoInvitado() {
     </div>`;
         } else {
           if (datos.procesado == false) {
-            console.log(datos.mensaje);
+            document.getElementById("panelCarrito").innerHTML += `
+            <div class="popup">
+                <div>
+                <h1>Hubo un error</h1>
+                <p>${datos.mensaje}</p>
+                <a href="login.php">Iniciar Sesion</a>
+                </div>
+            </div>`;
           }
         }
       });
