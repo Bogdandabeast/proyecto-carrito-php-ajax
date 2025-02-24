@@ -33,7 +33,6 @@ function cargarPedidos() {
 
                 const zapatillasDiv = pedidoSection.querySelector('.zapatillas');
 
-
                 pedido.zapatillas.forEach(zapatilla => {
                     const zapatillaDiv = document.createElement('div');
                     zapatillaDiv.className = 'zapatillaItem';
