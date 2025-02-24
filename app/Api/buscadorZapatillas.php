@@ -11,7 +11,30 @@ $data = json_decode(file_get_contents('php://input'), true);
 header('Content-Type: application/json');
 
 try {
-    $zapatillas = $conexion->prepare("SELECT * FROM zapatilla WHERE modelo LIKE :busqueda");
+
+ 
+
+
+    switch ($data["ordenar"]) {
+        case 0:
+            $zapatillas = $conexion->prepare("SELECT * FROM zapatilla WHERE modelo LIKE :busqueda");
+            break;
+
+            case "precioAsc":
+            $zapatillas = $conexion->prepare("SELECT * FROM zapatilla WHERE modelo LIKE :busqueda ORDER BY precio ASC");
+            break;
+
+            case "precioDesc":
+                $zapatillas = $conexion->prepare("SELECT * FROM zapatilla WHERE modelo LIKE :busqueda ORDER BY precio DESC");
+                break;
+        
+        default:
+        $zapatillas = $conexion->prepare("SELECT * FROM zapatilla WHERE modelo LIKE :busqueda");
+            break;
+    }
+    
+
+
 
     $busqueda = "%" . $data["busqueda"] . "%";
 
@@ -26,4 +49,6 @@ try {
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }
+
+
 ?>

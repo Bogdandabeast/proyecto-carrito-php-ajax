@@ -61,7 +61,7 @@ if (isset($data['email']) && isset($data['clave'])) {
 
             echo json_encode(["success" => true, "message" => "has entrado"]);
         } else {
-            echo json_encode(["success" => false, "message" => "datos no coinciden"]);
+            echo json_encode(["success" => false, "message" => "Usuario o Contraeña Incorrecta"]);
         }
     } catch (PDOException $e) {
 

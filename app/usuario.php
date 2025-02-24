@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="public/js/usuario.js"></script>
     <script src="./public/js/gestorCarrito.js"></script>
+    <script src="public/js/header.js"></script>
 </head>
 
 <body>

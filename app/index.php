@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="public/js/zapatillas.js"></script>
+    <script src="public/js/header.js"></script>
 </head>
 
 <body>
@@ -26,14 +27,12 @@
             <label for="buscar-zapatilla">Buscar modelo de zapatilla</label>
             <input type="text" id="buscar-zapatilla" placeholder="Buscar modelo de zapatilla" aria-label="Buscar modelo de zapatilla">
 
-            <!-- <label for="ordenar">Ordenar productos</label>
-            <select id="ordenar" class="ordenar" aria-label="Ordenar productos">
-                <option value="">Ordenar por</option>
-                <option value="nuevo">Más recientes</option>
-                <option value="popular">Más populares</option>
+           <label for="ordenar">Ordenar productos</label>
+            <select id="ordenarPor" class="ordenar" aria-label="Ordenar productos">
+                <option value="0">Relevancia</option>
                 <option value="precioAsc">Precio: Menor a mayor</option>
                 <option value="precioDesc">Precio: Mayor a menor</option>
-            </select> -->
+            </select>
         </section>
 
         <section id="zapatillas" aria-label="Lista de zapatillas disponibles">

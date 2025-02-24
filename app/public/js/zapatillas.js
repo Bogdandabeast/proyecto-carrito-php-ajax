@@ -49,18 +49,17 @@ function guardarCarrito() {
   mostrarCantidad();
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-  cargarCarrito();
-  console.log(carrito);
-});
+
 
 function buscarZapatilla(buscar) {
   const zapatillas = document.getElementById("zapatillas");
+ 
 
   zapatillasLista = [];
   const busqueda = {
     articulo: -1,
     busqueda: buscar,
+    ordenar:ordenarPor.value
   };
 
   const opciones = {
@@ -151,7 +150,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const buscarZapatillaInput = document.getElementById("buscar-zapatilla");
 
+  let ordenarPor = document.getElementById("ordenarPor");
+  
+
   buscarZapatillaInput.addEventListener("input", () => {
+    buscarZapatilla(buscarZapatillaInput.value);
+  });
+
+  ordenarPor.addEventListener("input", () => {
     buscarZapatilla(buscarZapatillaInput.value);
   });
 

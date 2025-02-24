@@ -18,6 +18,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
+  position: relative;
 }
 
 header .logo {
@@ -31,10 +32,9 @@ header .logo {
 }
 
 nav {
-  display: flex
-  ;
-      gap: 40px;
-      align-items: center;
+  display: flex;
+  gap: 40px;
+  align-items: center;
 }
 
 nav ul {
@@ -64,7 +64,6 @@ nav #guest a {
   padding: 5px 10px;
 }
 
-
 nav #carrito {
   position: relative;
 }
@@ -86,6 +85,59 @@ nav #carrito span {
   border: 3px solid #000000;
 }
 
+#movilMenu {
+  display: none;
+  background: none;
+  border: none;
+}
+
+.movilmenu button {
+  background: none;
+  border: none;
+}
+
+.movilmenu {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #090909;
+  width: 300px;
+  z-index: 99;
+  display: none;
+  flex-direction: column;
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 20px;
+  box-shadow: -2px 0px 8px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease-in-out;
+}
+
+.movilmenu h2 {
+  gap: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movilmenu li {
+  list-style-type: none;
+}
+
+.movilmenu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 0;
+  border-bottom: 1px solid #444;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.movilmenu a:hover {
+  background-color: #555;
+}
+
 nav a::after {
   content: "";
   position: absolute;
@@ -105,7 +157,6 @@ nav a:hover {
   color: #ccc;
 }
 
-
 .usuarioMenu {
   position: relative;
   background: #116ee1;
@@ -113,14 +164,12 @@ nav a:hover {
   border-radius: 4px;
   cursor: pointer;
 }
-.usuarioMenu  > span{
-margin-right: 10px;
-font-weight: 700;
+.usuarioMenu > span {
+  margin-right: 10px;
+  font-weight: 700;
 }
 
-
-
-.usuarioMenu  > .contendido {
+.usuarioMenu > .contendido {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -133,24 +182,21 @@ font-weight: 700;
   overflow: hidden;
 }
 
-.usuarioMenu  > .contendido a {
+.usuarioMenu > .contendido a {
   color: #000;
   padding: 10px;
 }
 
-.usuarioMenu > .contendido #cerrarSesion{
+.usuarioMenu > .contendido #cerrarSesion {
   background-color: #a00808;
   padding: 10px;
   color: #fff;
 }
 
 .usuarioMenu:hover .contendido {
-  display: flex
-  ;
-      flex-direction: column;
-  
+  display: flex;
+  flex-direction: column;
 }
-
 
 #banner {
   width: 100%;
@@ -230,6 +276,12 @@ font-weight: 700;
   height: 250px;
   background-size: cover;
   background-position: center;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #zapatillas .detalles-producto {
@@ -286,7 +338,8 @@ font-weight: 700;
   fill: #fff;
 }
 
-#panelCarrito,#misPedidos {
+#panelCarrito,
+#misPedidos {
   max-width: 700px;
   margin: 40px auto auto auto;
 }
@@ -300,7 +353,8 @@ font-weight: 700;
   gap: 20px;
 }
 
-#panelCarrito h1,#misPedidos h1{
+#panelCarrito h1,
+#misPedidos h1 {
   text-align: center;
   margin-bottom: 40px;
   border-bottom: 3px solid #e1e1e1;
@@ -370,7 +424,7 @@ font-weight: 700;
   text-align: left;
 }
 
-#panelCarrito .articulo p:nth-child(3){
+#panelCarrito .articulo p:nth-child(3) {
   color: #e91e63;
   font-size: 1.2em;
   font-weight: bold;
@@ -526,15 +580,14 @@ button:hover {
   margin: 50px auto;
 }
 form {
-  display: flex
-  ;
-      flex-direction: column;
-      border: solid black 0px;
-      border-radius: 10px;
-      padding: 20px;
-      width: 100%;
-      box-shadow: 0px 0px 10px #c7c7c7;
-      transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  border: solid black 0px;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0px 0px 10px #c7c7c7;
+  transition: 0.3s;
 }
 
 form > a > img {
@@ -571,10 +624,9 @@ form > h2 {
   margin-bottom: 2%;
 }
 
-form > h2 span{
+form > h2 span {
   font-weight: 400;
 }
-
 
 form > span {
   margin-bottom: 2%;
@@ -644,7 +696,6 @@ form .fondoRojo {
 .aviso {
   display: none;
 }
-
 
 /* Estilo general para el panel de pedidos */
 #panelPedidos {
@@ -758,7 +809,6 @@ form .fondoRojo {
   }
 }
 
-
 /* Loader */
 
 @keyframes ldio-yzaezf3dcmj-o {
@@ -831,4 +881,15 @@ form .fondoRojo {
 }
 .ldio-yzaezf3dcmj div {
   box-sizing: content-box;
+}
+
+@media (max-width: 760px) {
+  #links,
+  #guest {
+    display: none;
+  }
+
+  #movilMenu {
+    display: block;
+  }
 }
