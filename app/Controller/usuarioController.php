@@ -39,7 +39,6 @@ try {
         $pedidoId = $fila['pedido_id'];
 
         if (!isset($carrito[$pedidoId])) {
-            // Inicia el carrito con el pedido
             $carrito[$pedidoId] = [
                 'idPedido' => $pedidoId,
                 'fecha' => $fila['pedido_fecha'],
@@ -50,11 +49,9 @@ try {
         }
 
         if (!empty($fila['id_zapatilla'])) {
-            // Si no hay datos de la zapatilla (null), asignamos valores predeterminados
             $modelo = !empty($fila['modelo']) ? $fila['modelo'] : 'Modelo no disponible';
             $imagen = !empty($fila['imagen']) ? $fila['imagen'] : 'imagen_no_disponible.png';
 
-            // Agregamos la zapatilla al carrito
             $carrito[$pedidoId]['zapatillas'][] = [
                 'idZapatilla' => $fila['id_zapatilla'],
                 'cantidad' => $fila['cantidad'],
