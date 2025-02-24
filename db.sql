@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2025 a las 13:58:36
+-- Tiempo de generación: 24-02-2025 a las 14:06:13
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -39,52 +39,9 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id`, `idUsuario`, `precioTotal`, `fecha`) VALUES
-(1, 120, 2.00, '2025-02-23 13:26:01'),
-(3, 120, 2.00, '2025-02-23 13:26:56'),
-(4, 120, 2.00, '2025-02-23 13:27:58'),
-(5, 120, 2.00, '2025-02-23 13:28:04'),
-(6, 120, 2.00, '2025-02-23 13:28:48'),
-(7, 120, 2.00, '2025-02-23 13:29:01'),
-(8, 120, 2.00, '2025-02-23 13:29:16'),
-(9, 120, 2.00, '2025-02-23 13:33:50'),
-(10, 120, 2.00, '2025-02-23 13:34:30'),
-(11, 120, 2.00, '2025-02-23 13:35:01'),
-(12, 120, 2.00, '2025-02-23 13:35:31'),
-(13, 400, 2.00, '2025-02-23 13:36:05'),
-(14, 400, 2.00, '2025-02-23 13:37:33'),
-(15, 400, 2.00, '2025-02-23 13:39:01'),
-(16, 400, 2.00, '2025-02-23 13:39:49'),
-(17, 400, 2.00, '2025-02-23 13:39:51'),
-(18, 400, 2.00, '2025-02-23 13:39:52'),
-(19, 400, 2.00, '2025-02-23 13:40:13'),
-(20, 400, 2.00, '2025-02-23 13:40:28'),
-(21, 400, 2.00, '2025-02-23 13:40:38'),
-(22, 400, 2.00, '2025-02-23 13:41:19'),
-(23, 400, 2.00, '2025-02-23 13:41:19'),
-(24, 400, 2.00, '2025-02-23 13:47:22'),
-(25, 400, 2.00, '2025-02-23 13:47:22'),
-(26, 400, 2.00, '2025-02-23 13:47:27'),
-(27, 400, 2.00, '2025-02-23 13:47:27'),
-(28, 400, 2.00, '2025-02-23 13:49:25'),
-(29, 400, 2.00, '2025-02-23 13:49:25'),
-(30, 0, 2.00, '2025-02-23 13:49:38'),
-(31, 0, 2.00, '2025-02-23 13:49:38'),
-(32, 0, 2.00, '2025-02-23 13:50:12'),
-(33, 0, 2.00, '2025-02-23 13:50:12'),
-(34, 0, 2.00, '2025-02-23 13:50:55'),
-(35, 0, 2.00, '2025-02-23 13:50:55'),
-(36, 0, 2.00, '2025-02-23 13:51:25'),
-(37, 0, 2.00, '2025-02-23 13:51:25'),
-(38, 0, 2.00, '2025-02-23 13:51:50'),
-(39, 0, 2.00, '2025-02-23 13:51:50'),
-(40, 0, 2.00, '2025-02-23 13:52:20'),
-(41, 0, 2.00, '2025-02-23 13:52:20'),
-(42, 0, 2.00, '2025-02-23 13:52:44'),
-(43, 0, 2.00, '2025-02-23 13:52:44'),
-(44, 0, 2.00, '2025-02-23 13:54:35'),
-(45, 0, 2.00, '2025-02-23 13:54:35'),
-(46, 0, 2.00, '2025-02-23 13:55:24'),
-(47, 0, 2.00, '2025-02-23 13:55:24');
+(76, 30, 1119.91, '2025-02-24 13:18:29'),
+(77, 31, 4099.90, '2025-02-24 13:49:56'),
+(78, 31, 4099.90, '2025-02-24 13:49:56');
 
 -- --------------------------------------------------------
 
@@ -103,47 +60,12 @@ CREATE TABLE `pedido_zapatilla` (
 --
 
 INSERT INTO `pedido_zapatilla` (`idPedido`, `idZapatilla`, `cantidad`) VALUES
-(11, 60, 2),
-(12, 3, 2),
-(13, 3, 2),
-(13, 4, 2),
-(13, 5, 2),
-(14, 3, 2),
-(14, 4, 2),
-(14, 5, 2),
-(15, 3, 2),
-(15, 4, 2),
-(15, 5, 2),
-(16, 3, 2),
-(16, 4, 2),
-(16, 5, 2),
-(17, 3, 2),
-(17, 4, 2),
-(17, 5, 2),
-(18, 3, 2),
-(18, 4, 2),
-(18, 5, 2),
-(19, 3, 2),
-(19, 4, 2),
-(19, 5, 2),
-(20, 3, 2),
-(20, 4, 2),
-(20, 5, 2),
-(21, 3, 2),
-(21, 4, 2),
-(21, 5, 2),
-(23, 3, 2),
-(23, 4, 2),
-(23, 5, 2),
-(25, 3, 2),
-(25, 4, 2),
-(25, 5, 2),
-(27, 3, 2),
-(27, 4, 2),
-(27, 5, 2),
-(29, 3, 2),
-(29, 4, 2),
-(29, 5, 2);
+(76, 1, 2),
+(76, 2, 2),
+(76, 3, 7),
+(78, 1, 6),
+(78, 2, 14),
+(78, 3, 4);
 
 -- --------------------------------------------------------
 
@@ -165,8 +87,13 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `apellidos`, `email`, `clave`, `tipo`) VALUES
-(2, 'Sammy', 'Dian Yañez', 'sammydianya@gmail.com', '$2y$10$bKLYBlVc6MlQW9d6RO0l6eAoeRtwf.V277TR5gCmV4et9M9Ir47L.', 'REGISTRADO'),
-(3, 'maria', 'antonieta', 'maria@hotmail.com', '$2y$10$0hUbkHcEp2QaFUB0plnKxedkczogN6oa88Dkf2ad.dZZ1jHUtddpS', 'REGISTRADO');
+(24, 'Sammy', 'Dian Yañez', 'sammydianya@gmail.com', '$2y$10$RSiKvrHluwgZl4/AK3rxzuSqwSIe9xSinvAXqTzuEBsSslF.I9dla', 'REGISTRADO'),
+(25, 'Prueba', 'Prueba Prueba', 'sammmy2@gmail.com', '$2y$10$PK/pyaMEP6dWTwhuPzWvY.p7mYntMWeL4oT/J.c3lHiCU77sdEvM.', 'REGISTRADO'),
+(26, 'maria', 'antonieta', 'maria@hotmail.com', '$2y$10$uqAfD9TtHgxklND/zKRlcOM7v0c28ShfjPuatGFCo0DbU1LWTsD/2', 'REGISTRADO'),
+(27, NULL, NULL, 'sepicaliente@gmail.com', NULL, 'INVITADO'),
+(29, NULL, NULL, 'sepicaliente@gmail.com', NULL, 'INVITADO'),
+(30, NULL, NULL, 'sepicaliente@gmail.com', NULL, 'INVITADO'),
+(31, 'Sammy', 'Dian', 'sammy@gmail.com', '$2y$10$q2SV4gp4RMNGn52UZaed3uaOWhHzqfCtC./OAM.cgeMcUumJ54RDi', 'REGISTRADO');
 
 -- --------------------------------------------------------
 
@@ -210,17 +137,10 @@ ALTER TABLE `pedido`
   ADD KEY `idUsuario` (`idUsuario`);
 
 --
--- Indices de la tabla `pedido_zapatilla`
---
-ALTER TABLE `pedido_zapatilla`
-  ADD KEY `idZapatilla` (`idZapatilla`);
-
---
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `zapatilla`
@@ -236,13 +156,13 @@ ALTER TABLE `zapatilla`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
