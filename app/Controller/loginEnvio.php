@@ -67,7 +67,7 @@ if (isset($data['email']) && isset($data['clave'])) {
 
         echo json_encode(["success" => false, "message" => "Error: " . $e->getMessage()]);
     }
-} elseif(isset($data['email'])) {
+} elseif(isset($data['email']) && isset($data['codigo_pedido'])) {
      {
 
         include("../Model/bbdd.php");
@@ -75,8 +75,11 @@ if (isset($data['email']) && isset($data['clave'])) {
         session_start();
     
         $email = htmlspecialchars($data['email']);
+        $codigo_pedido = str_replace("#","",htmlspecialchars($data['codigo_pedido']));
+        
     
-        $sql = "SELECT * FROM usuario WHERE email = ?";
+                $sql = "SELECT usuario.email, usuario.tipo, usuario.id, pedido_zapatilla.idPedido FROM usuario JOIN pedido ON usuario.id = pedido.idUsuario JOIN pedido_zapatilla ON pedido.id = pedido_zapatilla.idPedido WHERE usuario.email = ?; 
+                        ";
     
         try {
             $sentencia = $conexion->prepare($sql);
@@ -84,9 +87,12 @@ if (isset($data['email']) && isset($data['clave'])) {
             $usuario = $sentencia->fetch();
     
 
-            if ($usuario && $usuario['tipo'] === 'INVITADO') {
+            if ($usuario && $usuario['tipo'] === 'INVITADO' && $usuario['idPedido'] == $codigo_pedido) {
     
                 $_SESSION["INVITADO"] = $usuario['id'];
+                $_SESSION["INVITADO_EMAIL"] = $usuario['email'];
+                $_SESSION["INVITADO_PEDIDO"] = $usuario['idPedido'];
+
             
                 echo json_encode(["success" => true, "message" => "has entrado"]);
             } else {

@@ -57,6 +57,9 @@
                 <label for="email_invitado">Email</label>
                 <input type="text" id="email_invitado" name="email" placeholder="tu email.." required>
                 <span id="emailSpan" class="aviso"></span>
+                <label for="codigo_pedido">Código del pedido</label>
+                <input type="text" id="codigo_pedido" name="codigo_pedido" placeholder="tu código de pedido.." required>
+                <span id="codigoPedidoSpan" class="aviso"></span>
                 <button id="invitado_mandar">Entrar</button>
                 <a href="#" id="login" class="otroInicio">Entrar Como Usuario</a>
             </form>
