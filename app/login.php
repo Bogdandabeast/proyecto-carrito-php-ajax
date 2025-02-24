@@ -38,7 +38,7 @@
                 <h2>Iniciar Session</h2>
                 <!--campo email-->
                 <label for="email">Email</label>
-                <input type="text" id="email" name="email" placeholder="tu email.." required>
+                <input type="text" id="email" name="email" placeholder="tu email.." required autocomplete="off">
                 <span id="emailSpan" class="aviso"></span>
                 <!--campo clave-->
                 <label for="">Clave</label>

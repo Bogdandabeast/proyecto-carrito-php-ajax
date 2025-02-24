@@ -41,7 +41,7 @@
 
             <!--campo email-->
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="maria@hotmail.com">
+            <input type="text" id="email" name="email" value="maria@hotmail.com" autocomplete="off">
             <span id="emailSpan" class="aviso"></span>
 
             <!--campo clave-->
